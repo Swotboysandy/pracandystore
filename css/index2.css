@@ -1884,7 +1884,7 @@ a[href^="http://maps.google.com/maps"],a[href^="https://maps.google.com/maps"] {
     }
 
     .faq_media img {
-        height: 100%
+        height: 100%;
     }
 
     .faq_main {

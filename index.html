@@ -1,604 +1,1087 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Home | Herbalist</title>
-    <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
-    <link rel="stylesheet preload" as="style" href="css/icomoon.css" />
-    <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
-    <link rel="stylesheet" href="css/index.min.css" />
-    <style>
-      /* Example inline styling for the cart counter badge */
-      #cart-counter {
-        display: none;
-        margin-left: 4px;
-        background: red;
-        color: white;
-        border-radius: 50%;
-        padding: 2px 6px;
-        font-size: 0.8rem;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header Start -->
-    <header class="header d-flex flex-wrap align-items-center" data-page="home" data-overlay="true">
-      <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
-        <a class="brand header_logo d-flex align-items-center" href="index.html">
-          <span class="logo">
-            <img src="svg/logo_0.png" alt="Herbalist Logo" style="width: 60%;" />
-          </span>
-        </a>
-        <nav class="header_nav">
-          <ul class="header_nav-list">
-            <li class="header_nav-list_item dropdown">
-              <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" data-bs-toggle="collapse" data-bs-target="#homeMenu" aria-expanded="false" aria-controls="homeMenu">
-                Home <i class="icon-caret_down icon"></i>
-              </a>
-              <div class="dropdown-menu collapse" id="homeMenu">
-                <ul class="dropdown-list">
-                  <li class="list-item nav-item" data-page="home"><a class="dropdown-item" href="index.html">Home 01</a></li>
-                  <li class="list-item nav-item" data-page="home2"><a class="dropdown-item" href="index2.html">Home 02</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="header_nav-list_item dropdown">
-              <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" data-bs-toggle="collapse" data-bs-target="#shopMenu" aria-expanded="false" aria-controls="shopMenu">
-                Shop <i class="icon-caret_down icon"></i>
-              </a>
-              <div class="dropdown-menu collapse" id="shopMenu">
-                <ul class="dropdown-list">
-                  <li class="list-item nav-item" data-page="shop"><a class="dropdown-item" href="shop.html">Shop 01</a></li>
-                  <li class="list-item nav-item" data-page="shop2"><a class="dropdown-item" href="shop2.html">Shop 02</a></li>
-                  <li class="list-item nav-item" data-page="product"><a class="dropdown-item" href="product.html">Single Product 01</a></li>
-                  <li class="list-item nav-item" data-page="product2"><a class="dropdown-item" href="product2.html">Single Product 02</a></li>
-                  <li class="list-item nav-item" data-page="compare"><a class="dropdown-item" href="compare.html">Compare List</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="header_nav-list_item dropdown">
-              <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" data-bs-toggle="collapse" data-bs-target="#newsMenu" aria-expanded="false" aria-controls="newsMenu">
-                News <i class="icon-caret_down icon"></i>
-              </a>
-              <div class="dropdown-menu collapse" id="newsMenu">
-                <ul class="dropdown-list">
-                  <li class="list-item nav-item" data-page="news"><a class="dropdown-item" href="news.html">News 01</a></li>
-                  <li class="list-item nav-item" data-page="news2"><a class="dropdown-item" href="news2.html">News 02</a></li>
-                  <li class="list-item nav-item" data-page="post"><a class="dropdown-item" href="post.html">Single Post 01</a></li>
-                  <li class="list-item nav-item" data-page="post2"><a class="dropdown-item" href="post2.html">Single Post 02</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="header_nav-list_item dropdown">
-              <a class="nav-link dropdown-toggle d-inline-flex align-items-center" href="#" data-bs-toggle="collapse" data-bs-target="#pagesMenu" aria-expanded="false" aria-controls="pagesMenu">
-                Pages <i class="icon-caret_down icon"></i>
-              </a>
-              <div class="dropdown-menu collapse" id="pagesMenu">
-                <ul class="dropdown-list">
-                  <li class="list-item nav-item" data-page="about"><a class="dropdown-item" href="about.html">About</a></li>
-                  <li class="list-item nav-item" data-page="team"><a class="dropdown-item" href="team.html">Team</a></li>
-                  <li class="list-item nav-item" data-page="faq"><a class="dropdown-item" href="faq.html">FAQ</a></li>
-                  <li class="list-item nav-item" data-page="contacts"><a class="dropdown-item" href="contacts.html">Contacts 01</a></li>
-                  <li class="list-item nav-item" data-page="contacts2"><a class="dropdown-item" href="contacts2.html">Contacts 02</a></li>
-                  <li class="list-item nav-item" data-page="404"><a class="dropdown-item" href="404.html">Error Page</a></li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-        </nav>
-        <span class="header_trigger d-inline-flex d-xl-none flex-column justify-content-between">
-          <span class="line line--short"></span>
-          <span class="line line"></span>
-          <span class="line line--short"></span>
-          <span class="line line"></span>
-        </span>
-        <div class="header_user d-flex justify-content-end align-items-center">
-          <a class="header_user-action d-inline-flex align-items-center justify-content-center" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-controls="cartOffcanvas">
-            <i class="icon-basket"></i>
-            <span id="cart-counter" class="cart-counter"></span>
-          </a>
-        </div>
-      </div>
-    </header>
-    <!-- Header End -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Home | PracandyShop</title>
+        <link rel="stylesheet preload" as="style" href="css/preload.min.css" />
+        <link rel="stylesheet preload" as="style" href="css/icomoon.css" />
+        <link rel="stylesheet preload" as="style" href="css/libs.min.css" />
 
-    <!-- Main Content Start -->
-    <main>
-      <!-- Hero Section Start -->
-      <section class="hero">
-        <div class="container d-xl-flex align-items-start">
-          <div class="hero_about col-xl-6">
-            <div class="hero_header">
-              <h1 class="hero_header-title">Bring the Universe Home — No Spacesuit Required</h1>
-              <p class="hero_header-text">
-                Whether you're shopping for your kiddo, your vibe-obsessed bestie, or just want to fall asleep under the stars — our space-themed lights turn any room into a cosmic experience. They're fun. They're unique. And honestly? They're out of this world.
-              </p>
-              <a class="hero_header-btn btn" href="shop.html">Shop the Galaxy</a>
-            </div>
-            <div class="hero_contacts">
-              <p class="hero_contacts-text">Questions? Cosmic emergencies? We've got you.</p>
-              <span class="hero_contacts-data d-flex flex-column flex-sm-row align-items-center">
-                <span class="icon d-flex align-items-center justify-content-center"><i class="icon-call"></i></span>
-                <span class="d-flex flex-column">
-                  <span>Questions? We’re Always Here</span>
-                  <a class="link" href="https://www.instagram.com/sandy_dumps_here/" target="_blank">Chat with Us on Instagram</a>
+        <link rel="stylesheet" href="css/index2.min.css" />
+    </head>
+    <body>
+        <header class="header d-flex flex-wrap align-items-center" data-page="home2" data-overlay="true">
+            <div class="container d-flex flex-wrap flex-xl-nowrap align-items-center justify-content-between">
+                <a class="brand header_logo d-flex align-items-center" href="index.html">
+                    <span class="logo">
+                        <!-- Logo SVG left unchanged -->
+                    </span>
+                    <span class="accent">Pracandy</span>
+                    <span>Store</span>
+                </a>
+        
+                <nav class="header_nav">
+                    <ul class="header_nav-list">
+                        <li class="header_nav-list_item">
+                            <a class="nav-link d-inline-flex align-items-center" href="index.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="header_nav-list_item">
+                            <a class="nav-link d-inline-flex align-items-center" href="contacts.html">
+                                Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+        
+                <span class="header_trigger d-inline-flex d-xl-none flex-column justify-content-between">
+                    <span class="line line--short"></span>
+                    <span class="line line"></span>
+                    <span class="line line--short"></span>
+                    <span class="line line"></span>
                 </span>
-              </span>
+        
+                <div class="header_user d-flex justify-content-end align-items-center">
+                    <a
+                        class="header_user-action d-inline-flex align-items-center justify-content-center"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#cartOffcanvas"
+                        aria-controls="cartOffcanvas"
+                    >
+                        <i class="icon-basket"></i>
+                    </a>
+                </div>
             </div>
-          </div>
-          <div class="hero_promo col-xl-6">
-            <div class="hero_promo-underlay"></div>
-            <div class="hero_promo-underlay--highlight"></div>
-            <div class="hero_slider swiper">
-              <div class="swiper-wrapper">
-                <div class="hero_slider-slide d-flex flex-column flex-md-row justify-content-between justify-content-md-start align-items-md-center swiper-slide">
-                  <div class="hero_slider-slide_media">
+        </header>        
+        <!-- Homepage content start -->
+        <main>
+            <!-- Hero section start -->
+            <section class="hero section">
+                <div class="container">
+                    <div class="hero_content col-xl-6">
+                        <div class="hero_content-header">
+                            <h1 class="hero_content-header_title">Bring the Universe Home — No Spacesuit Required</h1>
+                            <p class="hero_content-header_text">
+                                Whether you're shopping for your kiddo, your vibe-obsessed bestie, or just want to fall asleep under the stars — our space-themed lights turn any room into a cosmic experience. They're fun. They're unique. And honestly? They're out of this world.
+                            </p>
+                        </div>
+                        <a class="hero_content-btn btn" href="shop.html">Shop Now</a>
+                        <div class="features-list d-sm-flex flex-wrap">
+                            <div class="features-list_row d-sm-flex">
+                                <div class="features-list_item" data-order="1" data-aos="fade-up">
+                                    <div class="wrapper d-flex flex-column flex-sm-row align-items-center">
+                                        <span class="icon d-flex align-items-center justify-content-center">
+                                            <svg
+                                                class=""
+                                                width="50"
+                                                height="35"
+                                                viewBox="0 0 50 35"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M31.6328 28.5714C31.6328 25.1954 34.3793 22.449 37.7553 22.449C41.1313 22.449 43.8777 25.1954 43.8777 28.5714C43.8777 31.9474 41.1318 34.6939 37.7553 34.6939C34.3793 34.6939 31.6328 31.9474 31.6328 28.5714ZM34.694 28.5714C34.694 30.2597 36.067 31.6326 37.7553 31.6326C39.4435 31.6326 40.8165 30.2598 40.8165 28.5714C40.8165 26.8832 39.4435 25.5102 37.7553 25.5102C36.067 25.5102 34.694 26.8832 34.694 28.5714Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M11.2246 28.5714C11.2246 25.1954 13.9711 22.449 17.3471 22.449C20.723 22.449 23.4695 25.1954 23.4695 28.5714C23.4695 31.9474 20.723 34.6939 17.3471 34.6939C13.9711 34.6939 11.2246 31.9474 11.2246 28.5714ZM14.2858 28.5714C14.2858 30.2597 15.6588 31.6326 17.3471 31.6326C19.0353 31.6326 20.4083 30.2598 20.4083 28.5714C20.4083 26.8832 19.0348 25.5102 17.3471 25.5102C15.6588 25.5102 14.2858 26.8832 14.2858 28.5714Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M40.9047 5.85977C40.6207 5.39516 40.0431 5.10205 39.4115 5.10205H31.6113V7.85397H38.3811L42.9309 15.3061L45.9175 14.0696L40.9047 5.85977Z"
+                                                    fill="currentColor"
+                                                />
+                                                <rect x="21.4277" y="25.5103" width="11.2245" height="4.08163" fill="currentColor" />
+                                                <path
+                                                    d="M10.5642 25.5103H4.74045C3.81252 25.5103 3.06055 26.4239 3.06055 27.5511C3.06055 28.6784 3.81262 29.5919 4.74045 29.5919H10.5643C11.4923 29.5919 12.2442 28.6782 12.2442 27.5511C12.2442 26.4238 11.4921 25.5103 10.5642 25.5103Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M49.6733 17.5633L46.6175 13.4888C46.3239 13.0963 45.8708 12.8668 45.3907 12.8668H34.1014V1.60832C34.1014 0.719925 33.4059 0 32.5479 0H6.65508C5.79696 0 5.10156 0.720024 5.10156 1.60832C5.10156 2.49661 5.79706 3.21663 6.65508 3.21663H30.9943V14.4751C30.9943 15.3635 31.6898 16.0835 32.5478 16.0835H44.6299L46.8924 19.1007V27.3956H42.5942C41.736 27.3956 41.0406 28.1156 41.0406 29.0039C41.0406 29.8923 41.7361 30.6122 42.5942 30.6122H48.4459C49.304 30.6122 49.9994 29.8922 49.9995 29.0039V18.5498C49.9995 18.1927 49.8846 17.8453 49.6733 17.5633Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M10.6991 18.3673H3.58707C2.73307 18.3673 2.04102 19.281 2.04102 20.4081C2.04102 21.5354 2.73316 22.4489 3.58707 22.4489H10.699C11.553 22.4489 12.2451 21.5353 12.2451 20.4081C12.2452 19.281 11.553 18.3673 10.6991 18.3673Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M15.7001 12.2449H1.64682C0.737262 12.2449 0 13.1585 0 14.2858C0 15.413 0.737262 16.3265 1.64682 16.3265H15.7001C16.6098 16.3265 17.3469 15.4129 17.3469 14.2858C17.3469 13.1586 16.6098 12.2449 15.7001 12.2449Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M17.7411 6.12244H3.68784C2.77818 6.12244 2.04102 7.03609 2.04102 8.16325C2.04102 9.29055 2.77828 10.2041 3.68784 10.2041H17.7411C18.6508 10.2041 19.388 9.29042 19.388 8.16325C19.3881 7.03609 18.6508 6.12244 17.7411 6.12244Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <h5 class="title">Free Shipping & Returns</h5>
+                                    </div>
+                                </div>
+                                <div class="features-list_item" data-order="2" data-aos="fade-up">
+                                    <div class="wrapper d-flex flex-column flex-sm-row align-items-center">
+                                        <span class="icon d-flex align-items-center justify-content-center">
+                                            <svg
+                                                class=""
+                                                width="50"
+                                                height="50"
+                                                viewBox="0 0 50 50"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M0 25C0 11.2156 11.2156 0 25 0C38.7844 0 50 11.2156 50 25C50 38.7844 38.7844 50 25 50C11.2156 50 0 38.7844 0 25ZM3.125 25C3.125 37.0625 12.9375 46.875 25 46.875C37.0625 46.875 46.875 37.0625 46.875 25C46.875 12.9375 37.0625 3.125 25 3.125C12.9375 3.125 3.125 12.9375 3.125 25Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M25.5109 23.9229C22.8562 23.9229 20.613 22.4689 20.613 20.7483C20.613 19.0277 22.8562 17.5737 25.5109 17.5737C27.013 17.5737 28.404 18.0308 29.3248 18.8245C29.9975 19.4054 31.026 19.3515 31.6301 18.6912C32.2309 18.0372 32.1689 17.034 31.493 16.4499C30.3501 15.4626 28.8154 14.7959 27.1436 14.5324V12.8118C27.1436 11.9356 26.4121 11.2245 25.5109 11.2245C24.6097 11.2245 23.8783 11.9356 23.8783 12.8118V14.5261C20.1558 15.1166 17.3477 17.6816 17.3477 20.7483C17.3477 24.2499 21.0113 27.0975 25.5109 27.0975C28.1656 27.0975 30.4089 28.5515 30.4089 30.2721C30.4089 31.9927 28.1656 33.4467 25.5109 33.4467C24.0089 33.4467 22.6179 32.9896 21.697 32.1959C21.0244 31.6118 19.9926 31.6689 19.3917 32.3292C18.7909 32.9832 18.853 33.9864 19.5289 34.5705C20.6717 35.561 22.2064 36.2245 23.8783 36.4912V38.2086C23.8783 39.0848 24.6097 39.7959 25.5109 39.7959C26.4121 39.7959 27.1436 39.0848 27.1436 38.2086V36.4943C30.866 35.9039 33.6742 33.3388 33.6742 30.2721C33.6742 26.7705 30.0105 23.9229 25.5109 23.9229Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <h5 class="title">Money Back Guarantee!</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="features-list_row d-sm-flex">
+                                <div class="features-list_item" data-order="3" data-aos="fade-up">
+                                    <div class="wrapper d-flex flex-column flex-sm-row align-items-center">
+                                        <span class="icon d-flex align-items-center justify-content-center">
+                                            <svg
+                                                class=""
+                                                width="50"
+                                                height="44"
+                                                viewBox="0 0 50 44"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M47.311 27.6956C46.4686 27.6956 45.7849 28.3823 45.7849 29.2284V39.9578H3.05233V21.5645H19.8401C20.6826 21.5645 21.3663 20.8778 21.3663 20.0318C21.3663 19.1857 20.6826 18.499 19.8401 18.499H3.05233V12.3679H19.8401C20.6826 12.3679 21.3663 11.6812 21.3663 10.8351C21.3663 9.98905 20.6826 9.30237 19.8401 9.30237H3.05233C1.36744 9.30237 0 10.6757 0 12.3679V39.9578C0 41.6499 1.36744 43.0233 3.05233 43.0233H45.7849C47.4698 43.0233 48.8372 41.6499 48.8372 39.9578V29.2284C48.8372 28.3823 48.1535 27.6956 47.311 27.6956Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M14.7285 27.907H8.52695C7.67114 27.907 6.97656 28.6884 6.97656 29.6512C6.97656 30.614 7.67114 31.3954 8.52695 31.3954H14.7285C15.5843 31.3954 16.2789 30.614 16.2789 29.6512C16.2789 28.6884 15.5843 27.907 14.7285 27.907Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M38.3926 0.1248L49.0758 4.83422C49.6374 5.08225 50.0006 5.65052 50.0006 6.27844V12.5577C50.0006 21.2073 46.8964 26.2558 38.5514 31.1881C38.3163 31.3263 38.0538 31.3953 37.7913 31.3953C37.5288 31.3953 37.2663 31.3263 37.0313 31.1881C28.6862 26.2432 25.582 21.1947 25.582 12.5577V6.27844C25.582 5.65052 25.9453 5.08225 26.5038 4.83422L37.187 0.1248C37.5746 -0.0415999 38.005 -0.0415999 38.3926 0.1248ZM37.7913 28.0046C44.6163 23.7975 46.9483 19.807 46.9483 12.5577V7.31451L37.7913 3.27697L28.6344 7.31451V12.5577C28.6344 19.7976 30.9663 23.7881 37.7913 28.0046Z"
+                                                    fill="currentColor"
+                                                />
+                                                <path
+                                                    d="M42.4773 9.62645C41.8524 9.11805 40.9396 9.21674 40.4338 9.85971L35.8643 15.7392L34.0562 12.9579C33.6056 12.2701 32.7016 12.0877 32.0417 12.5423C31.3761 12.9998 31.1929 13.9299 31.6377 14.6147L34.5445 19.1006C34.8033 19.4983 35.2277 19.7436 35.6928 19.7675C35.7131 19.7675 35.7364 19.7675 35.7538 19.7675C36.1927 19.7675 36.6113 19.5641 36.8904 19.2053L42.7041 11.7288C43.2041 11.0829 43.1052 10.1438 42.4773 9.62645Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <h5 class="title">Cash On Delivery - No worries</h5>
+                                    </div>
+                                </div>
+                                <div class="features-list_item" data-order="4" data-aos="fade-up">
+                                    <div class="wrapper d-flex flex-column flex-sm-row align-items-center">
+                                        <span class="icon d-flex align-items-center justify-content-center">
+                                            <svg
+                                                class=""
+                                                width="47"
+                                                height="50"
+                                                viewBox="0 0 47 50"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    clip-rule="evenodd"
+                                                    d="M41.2292 20.6684H41.3542C44.2277 20.6684 46.2265 23.8244 46.2264 26.485V34.2202C46.2264 36.6336 44.5398 38.3044 41.8538 38.49L40.6669 40.2227C38.3206 43.3138 34.6389 45.126 30.7349 45.1113C30.5595 46.2319 30.0354 47.2703 29.2356 48.0817C28.0503 49.2834 26.4339 49.9728 24.7381 50C21.3125 50.0002 18.5257 47.2672 18.4915 43.8738C18.5146 40.9805 20.5779 38.4977 23.4397 37.9196C26.7861 37.2434 30.0524 39.3828 30.7349 42.698C33.8524 42.7127 36.7936 41.2673 38.6681 38.7995L38.793 38.6139H37.3563C37.3328 38.6128 37.3092 38.611 37.2858 38.6086C36.634 38.5395 36.1622 37.9601 36.2319 37.3144V22.1535C36.2319 21.4108 36.6692 20.6683 37.3563 20.6683H38.7306V17.6361C38.7306 9.26299 31.8786 2.47514 23.4264 2.47514C14.9742 2.47514 8.12218 9.26299 8.12218 17.6361V20.6683H9.49645C10.1836 20.6683 10.6208 21.4109 10.6208 22.1535V37.3144C10.6233 37.3376 10.6251 37.361 10.6262 37.3843C10.6571 38.0329 10.1512 38.5836 9.49645 38.614H4.87398L4.85772 38.6138C4.84166 38.6136 4.82563 38.6133 4.80954 38.6128C2.08503 38.5442 -0.0676036 36.3007 0.00162401 33.6017V25.8665C0.00162401 23.0817 2.12544 20.6684 4.87398 20.6684H5.62353V17.6362C5.62353 7.89601 13.594 0 23.4264 0C33.2587 0 41.2292 7.89601 41.2292 17.6362V20.6684ZM4.87398 36.1387H8.12218V23.1436H4.87398C3.49971 23.1436 2.50027 24.4431 2.50027 25.8664V33.6015C2.4992 33.6236 2.49836 33.6455 2.49776 33.6674C2.465 34.9999 3.52888 36.1063 4.87398 36.1387ZM27.4242 46.3492C26.732 47.0928 25.7593 47.5186 24.7382 47.525C22.7059 47.493 21.0566 45.8864 20.9903 43.8739C20.9894 41.8575 22.6388 40.2222 24.6743 40.2214C26.7097 40.2206 28.3604 41.8545 28.3613 43.8709V43.8739C28.4133 44.7927 28.0732 45.6909 27.4242 46.3492ZM41.3542 36.1387C42.1037 36.1387 43.7279 35.8912 43.7279 34.2204V26.4852C43.7279 25.062 42.7284 23.1437 41.3542 23.1437H38.7306V36.1387H41.3542Z"
+                                                    fill="currentColor"
+                                                />
+                                            </svg>
+                                        </span>
+                                        <h5 class="title">Online Support</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero_media">
                     <picture>
-                      <source data-srcset="img/starry_night_projector.png" srcset="img/starry_night_projector.png" type="image/webp" />
-                      <img class="lazy" data-src="img/starry_night_projector.png" src="img/starry_night_projector.png" alt="media" />
+                        <source data-srcset="img\kids_robot_space_projector.png" srcset="img\kids_robot_space_projector.png" type="image/webp" />
+                        <img class="lazy hero_media-leaf" data-src="img\kids_robot_space_projector.png" src="img\kids_robot_space_projector.png" alt="media" />
                     </picture>
-                  </div>
-                  <div class="hero_slider-slide_main">
-                    <h2 class="title">Starry Night Projector</h2>
-                    <p class="text">
-                      Turn bedtime into a cosmic journey with this enchanting projector! It fills your space with a galaxy of stars and a glowing moon — perfect for dreamy nights and starry vibes.
-                    </p>
-                    <ul class="list">
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        Multi-color Star & Moon Projection
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        3 Buttons to Control Lights & Rotation
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        USB Powered + Battery Option
-                      </li>
+                </div>
+            </section>
+            <!-- Hero section end -->
+            <!-- Categories section start -->
+            <!-- <div class="categories section--nopb">
+                <div class="container">
+                    <ul class="categories_list d-flex flex-wrap">
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="1">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Seeds</h4>
+                            </a>
+                        </li>
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="2">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Flower</h4>
+                            </a>
+                        </li>
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="3">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Cartridges</h4>
+                            </a>
+                        </li>
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="4">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Concentrates</h4>
+                            </a>
+                        </li>
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="5">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Oil</h4>
+                            </a>
+                        </li>
+                        <li class="categories_list-item col-6 col-md-4 col-xl-2" data-order="6">
+                            <a class="categories_list-item_wrapper" href="#">
+                                <div class="media">
+                                    <span class="overlay d-flex flex-column justify-content-end">
+                                        <span class="overlay_content">24 Items</span>
+                                    </span>
+                                    <picture>
+                                        <source
+                                            data-srcset="img/placeholder.jpg"
+                                            srcset="img/placeholder.jpg"
+                                            type="image/webp"
+                                        />
+                                        <img
+                                            class="lazy"
+                                            data-src="img/placeholder.jpg"
+                                            src="img/placeholder.jpg"
+                                            alt="media"
+                                        />
+                                    </picture>
+                                </div>
+                                <h4 class="title">Edible</h4>
+                            </a>
+                        </li>
                     </ul>
-                    <a class="btn--underline" href="#">About Product</a>
+                </div>
+            </div> -->
+            <!-- Categories section end -->
+            <!-- Popular products section start -->
+            <section class="popular section">
+                <div class="container">
+                  <div class="popular_header">
+                    <h2 class="popular_header-title">Gifts That Light Up Every Moment</h2>
+                    <p class="popular_header-text">
+                        Whether it’s for birthdays, holidays, or just because—our magical lights are the perfect gift to make someone smile and say, “Whoa!”
+                    </p>
+                  </div>
+                  <div class="popular_slider swiper">
+                    <div class="swiper-wrapper">
+              
+                      <!-- Product 1 -->
+                      <div class="popular_slider-slide swiper-slide">
+                        <div class="products_list-item_wrapper d-flex flex-column">
+                          <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener noreferrer">
+                              <img class="lazy preview" src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector" />
+                            </a>
+                          </div>
+                          <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <div class="main_rating">
+                              <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                              </ul>
+                            </div>
+                            <a class="main_title" href="product.html">Kids Robot Space Projector</a>
+                            <ul class="main_table d-flex flex-column align-items-left">
+                              <li><span class="property">Features</span><span class="value">Remote Controlled, 360°</span></li>
+                              <li><span class="property">Lighting</span><span class="value">Colorful Galaxy Effect</span></li>
+                            </ul>
+                            <div class="main_price"><span class="price">₹699</span></div>
+                            <a class="btn btn--green add-to-cart" href="#" data-id="product1" data-name="Kids Robot Space Projector" data-price="699">Add to Cart</a>
+                          </div>
+                        </div>
+                      </div>
+              
+                      <!-- Product 2 -->
+                      <div class="popular_slider-slide swiper-slide">
+                        <div class="products_list-item_wrapper d-flex flex-column">
+                          <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener noreferrer">
+                              <img class="lazy preview" src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball Lamp Gift" />
+                            </a>
+                          </div>
+                          <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <div class="main_rating">
+                              <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star"></i></li>
+                              </ul>
+                            </div>
+                            <a class="main_title" href="product.html">Moon Light Crystal Ball</a>
+                            <ul class="main_table d-flex flex-column align-items-left">
+                                <li><span class="property">Glow</span><span class="value">Warm LED Ambient Light</span></li>
+                              <li><span class="property">Material</span><span class="value">Premium Glass & Wood</span></li>
+                            </ul>
+                            <div class="main_price"><span class="price">₹269</span></div>
+                            <a class="btn btn--green add-to-cart" href="#" data-id="product2" data-name="Moon Light Crystal Ball" data-price="269">Add to Cart</a>
+                          </div>
+                        </div>
+                      </div>
+              
+                      <!-- Product 3 -->
+                      <div class="popular_slider-slide swiper-slide">
+                        <div class="products_list-item_wrapper d-flex flex-column">
+                          <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener noreferrer">
+                              <img class="lazy preview" src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector Lamp" />
+                            </a>
+                          </div>
+                          <div class="main d-flex flex-column align-items-center justify-content-between">
+                            <div class="main_rating">
+                              <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star_fill"></i></li>
+                                <li><i class="icon-star"></i></li>
+                              </ul>
+                            </div>
+                            <a class="main_title" href="product.html">Starry Night Galaxy Projector</a>
+                            <ul class="main_table d-flex flex-column align-items-left">
+                              <li><span class="property">Modes</span><span class="value">6 Color Light Effects</span></li>
+                              <li><span class="property">Power</span><span class="value">USB or Battery</span></li>
+                            </ul>
+                            <div class="main_price"><span class="price">₹399</span></div>
+                            <a class="btn btn--green add-to-cart" href="#" data-id="product3" data-name="Starry Night Galaxy Projector" data-price="399">Add to Cart</a>
+                          </div>
+                        </div>
+                      </div>
+              
+                    </div>
+              
+                    <div class="swiper-pagination swiper-pagination--dots"></div>
                   </div>
                 </div>
-                <div class="hero_slider-slide d-flex flex-column flex-md-row justify-content-between justify-content-md-start align-items-md-center swiper-slide">
-                  <div class="hero_slider-slide_media">
-                    <picture>
-                      <source data-srcset="img/kids_robot_space_projector.png" srcset="img/kids_robot_space_projector.png" type="image/webp" />
-                      <img class="lazy" data-src="img/kids_robot_space_projector.png" src="img/kids_robot_space_projector.png" alt="media" />
-                    </picture>
+              </section>
+              
+            <!-- Popular products section end -->
+            <!-- Promo section start -->
+            <div class="promo">
+                <div class="promo_fluid d-lg-flex align-items-center align-items-xxl-end">
+                  <div class="wrapper section--nopb col-lg-6 col-xxl-auto">
+                    <div class="promo_header">
+                      <a class="promo_header-title" href="product.html" target="_blank" rel="noopener noreferrer">
+                        Magical Moon Light Crystal Ball Lamp
+                      </a>
+                      <p class="promo_header-text">
+                        Transform your space into a dreamy oasis with the warm glow of our premium Moon Light Crystal Ball. Perfect for cozy nights, meditation, or as a stunning gift.
+                      </p>
+                    </div>
+                    <div class="promo_price">
+                      <span class="price price--old">₹349</span>
+                      <span class="price price--new">₹269</span>
+                    </div>
+                    <div class="promo_timer timer d-flex justify-content-center justify-content-md-start">
+                      <div class="timer_block d-flex flex-column justify-content-center">
+                        <span class="timer_block-number" id="days">25</span>
+                        days
+                      </div>
+                      <div class="timer_block d-flex flex-column justify-content-center">
+                        <span class="timer_block-number" id="hours">13</span>
+                        hours
+                      </div>
+                      <div class="timer_block d-flex flex-column justify-content-center">
+                        <span class="timer_block-number" id="minutes">18</span>
+                        mins
+                      </div>
+                      <div class="timer_block d-flex flex-column justify-content-center">
+                        <span class="timer_block-number" id="seconds">23</span>
+                        secs
+                      </div>
+                    </div>
+                    <a class="promo_btn btn" href="shop.html">Shop Now</a>
                   </div>
-                  <div class="hero_slider-slide_main">
-                    <h2 class="title">Astronaut Galaxy Projector</h2>
-                    <p class="text">
-                      Bring the universe into your room with this adorable astronaut night light. Perfect for kids, teens, or any space lover who dreams among the stars.
-                    </p>
-                    <ul class="list">
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        360° Rotating Nebula Projection
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        Remote-Controlled Light Modes
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        USB Powered & Timer Settings
-                      </li>
-                    </ul>
-                    <a class="btn--underline" href="#">About Product</a>
-                  </div>
-                </div>
-                <div class="hero_slider-slide d-flex flex-column flex-md-row justify-content-between justify-content-md-start align-items-md-center swiper-slide">
-                  <div class="hero_slider-slide_media">
+                  <div class="media">
                     <picture>
                       <source data-srcset="img/Moon_light_gift.png" srcset="img/Moon_light_gift.png" type="image/webp" />
-                      <img class="lazy" data-src="img/Moon_light_gift.png" src="img/Moon_light_gift.png" alt="media" />
+                      <img class="lazy" data-src="img/Moon_light_gift.png" src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball" />
                     </picture>
                   </div>
-                  <div class="hero_slider-slide_main">
-                    <h2 class="title">Moonlight Magic</h2>
-                    <p class="text">
-                      Experience the enchanting glow of the moon right in your living space. Our Moonlight Magic gently bathes your room in a soothing luminescence—perfect for relaxing evenings and creating a serene ambiance.
+                </div>
+              </div>
+            <!-- Promo section end -->
+            <!-- Reviews section start -->
+            <section class="reviews section--nopb">
+                <div class="container">
+                  <div class="reviews_header">
+                    <h2 class="reviews_header-title">Your Trust is Our Top Concern</h2>
+                    <p class="reviews_header-text">
+                      Real customers. Honest reviews. We’re proud to share their experience with our products.
                     </p>
-                    <ul class="list">
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        Soft, Ambient Illumination
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        Energy-Efficient LED Lighting
-                      </li>
-                      <li class="list-item d-flex align-items-center justify-content-center justify-content-sm-start">
-                        <span class="icon d-flex align-items-center justify-content-center">
-                          <i class="icon-check"></i>
-                        </span>
-                        Adjustable Brightness & Timer Settings
-                      </li>
-                    </ul>
-                    <a class="btn--underline" href="#">About Product</a>
+                  </div>
+                  <div class="reviews_slider swiper">
+                    <div class="swiper-wrapper">
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_robo.jpeg" srcset="img/review/Review_robo.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_robo.jpeg" src="img/review/Review_robo.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            The Kids Robot Space Projector is just magical! My son absolutely loves the galaxy scenes, and it’s super easy to operate. Great buy!
+                          </p>
+                          <h5 class="name">Ananya Sharma</h5>
+                        </div>
+                      </div>
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_robo_2.jpeg" srcset="img/review/Review_robo_2.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_robo_2.jpeg" src="img/review/Review_robo_2.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            I ordered the Moon Light Crystal Ball for my bedroom, and it’s absolutely stunning. It gives off a soft warm glow that’s perfect at night.
+                          </p>
+                          <h5 class="name">Rohan Mehra</h5>
+                        </div>
+                      </div>
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_robo_3.jpeg" srcset="img/review/Review_robo_3.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_robo_3.jpeg" src="img/review/Review_robo_3.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            The Starry Night Galaxy Projector transformed my living room! The color modes are incredible and so relaxing after a long day.
+                          </p>
+                          <h5 class="name">Priya Nair</h5>
+                        </div>
+                      </div>
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_moon.jpeg" srcset="img/review/Review_moon.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_moon.jpeg" src="img/review/Review_moon.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            Super fast delivery and beautiful packaging! The projector is easy to use and the galaxy effects are breathtaking.
+                          </p>
+                          <h5 class="name">Aarav Patel</h5>
+                        </div>
+                      </div>
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_moon_2.jpeg" srcset="img/review/Review_moon_2.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_moon_2.jpeg" src="img/review/Review_moon_2.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            I bought the Crystal Ball for a gift and it was a huge hit! The warm LED glow looks even better in person.
+                          </p>
+                          <h5 class="name">Simran Kaur</h5>
+                        </div>
+                      </div>
+              
+                      <div class="reviews_slider-slide swiper-slide">
+                        <div class="reviews_slider-slide_wrapper d-flex flex-column align-items-center">
+                          <picture>
+                            <source data-srcset="img/review/Review_moon_3.jpeg" srcset="img/review/Review_moon_3.jpeg" type="image/webp" />
+                            <img class="lazy avatar" data-src="img/review/Review_moon_3.jpeg" src="img/review/Review_moon_3.jpeg" alt="avatar" />
+                          </picture>
+                          <ul class="rating d-flex align-items-center accent">
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                            <li class="rating_star"><i class="icon-star_fill"></i></li>
+                          </ul>
+                          <p class="text">
+                            Absolutely perfect for creating a calm and cozy vibe! Love the Starry Night projector. Highly recommend it.
+                          </p>
+                          <h5 class="name">Vikram Deshmukh</h5>
+                        </div>
+                      </div>
+              
+                    </div>
+                    <div class="swiper-pagination swiper-pagination--dots"></div>
                   </div>
                 </div>
-              </div>
-              <div class="hero-pagination swiper-pagination d-sm-flex flex-column"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Hero Section End -->
-
-      <!-- Featured Products Section Start -->
-      <section class="featured section--nopb">
-        <div class="container">
-          <div class="featured_header">
-            <h2 class="featured_header-title">Gifts That Light Up Every Moment</h2>
-            <p class="featured_header-text">
-              Whether it’s for birthdays, holidays, or just because—our magical lights are the perfect gift to make someone smile and say, “Whoa!”
-            </p>
-          </div>
-          <div class="products_list d-grid">
-            <!-- Product 1 -->
-            <div class="products_list-item">
-              <div class="products_list-item_wrapper d-flex flex-column">
-                <div class="media">
-                  <a href="product.html" target="_blank" rel="noopener noreferrer">
-                    <img class="lazy preview" src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector" />
-                  </a>
+                <div class="reviews_underlay">
+                  <span class="reviews_underlay-circle reviews_underlay-circle--green"></span>
+                  <span class="reviews_underlay-circle reviews_underlay-circle--yellow"></span>
                 </div>
-                <div class="main d-flex flex-column align-items-center justify-content-between">
-                  <div class="main_rating">
-                    <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                    </ul>
-                  </div>
-                  <a class="main_title" href="product.html">Kids Robot Space Projector</a>
-                  <ul class="main_table d-flex flex-column align-items-center">
-                    <li><span class="property">Features</span><span class="value">Remote Controlled, 360° Spin</span></li>
-                    <li><span class="property">Lighting</span><span class="value">Colorful Galaxy Effect</span></li>
-                  </ul>
-                  <div class="main_price"><span class="price">₹699</span></div>
-                  <a class="btn btn--green add-to-cart" href="#" data-id="product1" data-name="Kids Robot Space Projector" data-price="699">Add to Cart</a>
+              </section>
+            <!-- Reviews section end -->
+            <!-- Newsletter section start -->
+            <section class="newsletter section--nopb">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="newsletter_highlight">
+                            <span class="underlay underlay--left">
+                                <span class="underlay_circle underlay_circle--accent"></span>
+                            </span>
+                            <span class="underlay underlay--right">
+                                <span class="underlay_circle underlay_circle--small underlay_circle--green"></span>
+                                <span class="underlay_circle underlay_circle--big underlay_circle--green"></span>
+                            </span>
+                        </div>
+            
+                        <div class="newsletter_content">
+                            <div class="newsletter_header">
+                                <h2 class="newsletter_header-title">Sign Up for Our Newsletter</h2>
+                                <p class="newsletter_header-text">
+                                    Accumsan sit amet nulla facilisi morbi tempus. Suscipit tellus mauris a diam maecenas sed enim ut sem
+                                </p>
+                            </div>
+            
+                            <!-- Updated Form -->
+                            <form id="newsletterForm" class="newsletter_form d-sm-flex" action="https://formspree.io/f/mblolqjb" method="POST">
+                                <input class="newsletter_form-field field required" type="email" name="email" placeholder="Your Email" required />
+                                <button class="newsletter_form-btn btn" type="submit">Subscribe</button>
+                            </form>
+            
+                            <!-- Success Message -->
+                            <div id="newsletterSuccess" style="display: none; margin-top: 10px; color: green; font-weight: bold;">
+                                Thanks for subscribing! 🎉
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-
-            <!-- Product 2 -->
-            <div class="products_list-item">
-              <div class="products_list-item_wrapper d-flex flex-column">
-                <div class="media">
-                  <a href="product.html" target="_blank" rel="noopener noreferrer">
-                    <img class="lazy preview" src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball Lamp Gift" />
-                  </a>
-                </div>
-                <div class="main d-flex flex-column align-items-center justify-content-between">
-                  <div class="main_rating">
-                    <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star"></i></li>
-                    </ul>
-                  </div>
-                  <a class="main_title" href="product.html">Moon Light Crystal Ball</a>
-                  <ul class="main_table d-flex flex-column align-items-center">
-                    <li><span class="property">Glow</span><span class="value">Warm LED Ambient Light</span></li>
-                    <li><span class="property">Material</span><span class="value">Premium Glass & Wood</span></li>
-                  </ul>
-                  <div class="main_price"><span class="price">₹269</span></div>
-                  <a class="btn btn--green add-to-cart" href="#" data-id="product2" data-name="Moon Light Crystal Ball" data-price="269">Add to Cart</a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Product 3 -->
-            <div class="products_list-item">
-              <div class="products_list-item_wrapper d-flex flex-column">
-                <div class="media">
-                  <a href="product.html" target="_blank" rel="noopener noreferrer">
-                    <img class="lazy preview" src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector Lamp" />
-                  </a>
-                </div>
-                <div class="main d-flex flex-column align-items-center justify-content-between">
-                  <div class="main_rating">
-                    <ul class="main_rating-stars d-flex align-items-center justify-content-center accent">
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star_fill"></i></li>
-                      <li><i class="icon-star"></i></li>
-                    </ul>
-                  </div>
-                  <a class="main_title" href="product.html">Starry Night Galaxy Projector</a>
-                  <ul class="main_table d-flex flex-column align-items-center">
-                    <li><span class="property">Modes</span><span class="value">6 Color Light Effects</span></li>
-                    <li><span class="property">Power</span><span class="value">USB or Battery</span></li>
-                  </ul>
-                  <div class="main_price"><span class="price">₹399</span></div>
-                  <a class="btn btn--green add-to-cart" href="#" data-id="product3" data-name="Starry Night Galaxy Projector" data-price="399">Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a class="featured_btn btn" href="shop.html">View All Products</a>
-        </div>
-      </section>
-      <!-- Featured Products Section End -->
-
-      <!-- (Other sections such as About and Product sections would follow here if needed) -->
-    </main>
-    <!-- Main Content End -->
-
-    <!-- Footer Start -->
-    <footer class="footer">
-      <div class="footer_main section">
-        <div class="container d-flex flex-column flex-md-row flex-wrap justify-content-between">
-          <!-- Branding -->
-          <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
-            <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
-              <span class="logo">
-                <svg width="48" height="45" viewBox="0 0 48 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="23.5" cy="23.5" r="17.5" fill="#EFC368"/>
-                </svg>
-              </span>
-              <span class="accent">The</span>
-              <span>PracandyStore</span>
-            </a>
-            <div class="footer_main-about_wrapper">
-              <p class="text">
-                Bringing light to your life—literally. Whether it’s bedtime magic or cosmic vibes, our projectors make the perfect gift.
-              </p>
-            </div>
-          </div>
-          <!-- Contact Info -->
-          <div class="footer_main-contacts footer_main-block col-md-6 col-xl-auto">
-            <h4 class="footer_main-contacts_header footer_main-header">Get In Touch</h4>
-            <ul class="footer_main-contacts_list">
-              <li class="list-item d-flex align-items-center">
-                <span class="icon d-flex justify-content-center align-items-center">
-                  <i class="icon-call"></i>
-                </span>
-                <div class="wrapper d-flex flex-column">
-                  <a class="link" href="tel:+1234567890">+1-202-555-0133</a>
-                </div>
-              </li>
-              <li class="list-item d-flex align-items-center">
-                <span class="icon d-flex justify-content-center align-items-center">
-                  <i class="icon-location"></i>
-                </span>
-                <div class="wrapper d-flex flex-column">
-                  <span>Online-Only Store</span>
-                  <span>Based in the USA</span>
-                </div>
-              </li>
-              <li class="list-item d-flex align-items-center">
-                <span class="icon d-flex justify-content-center align-items-center">
-                  <i class="icon-clock"></i>
-                </span>
-                <div class="wrapper d-flex flex-column">
-                  <span>Open 24/7</span>
-                  <span>Customer Support Available Anytime</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- Helpful Links -->
-          <div class="footer_main-nav footer_main-block col-md-6 col-xl-auto">
-            <h4 class="footer_main-nav_header footer_main-header">Helpful Links</h4>
-            <ul class="footer_main-nav_list d-flex flex-column">
-              <li class="list-item">
-                <a class="link d-inline-flex align-items-center" href="#">
-                  <i class="icon-caret_right accent icon"></i>
-                  Return & Refund Policy
-                </a>
-              </li>
-              <li class="list-item">
-                <a class="link d-inline-flex align-items-center" href="#">
-                  <i class="icon-caret_right accent icon"></i>
-                  Shipping Policy
-                </a>
-              </li>
-              <li class="list-item">
-                <a class="link d-inline-flex align-items-center" href="#">
-                  <i class="icon-caret_right accent icon"></i>
-                  Privacy Policy
-                </a>
-              </li>
-              <li class="list-item">
-                <a class="link d-inline-flex align-items-center" href="#">
-                  <i class="icon-caret_right accent icon"></i>
-                  Terms of Service
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- Footer Bottom -->
-      <div class="footer_secondary">
-        <div class="container d-flex flex-column-reverse flex-md-row justify-content-center justify-content-md-between align-items-md-center">
-          <p class="footer_secondary-copyright">
-            The PracandyStore &copy; <span id="currentYear"></span> – All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
-    <!-- Footer End -->
-
-    <!-- External Script (if any) -->
-    <script src="js/common.min.js"></script>
-
-    <!-- Offcanvas Cart Section -->
-    <div class="cartOffcanvas offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
-      <div class="cartOffcanvas_header d-flex align-items-center justify-content-between">
-        <h2 class="cartOffcanvas_header-title" id="cartOffcanvasLabel">Cart</h2>
-        <button class="cartOffcanvas_header-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
-          <i class="icon-close"></i>
-        </button>
-      </div>
-      <div class="cartOffcanvas_body">
-        <ul class="cartOffcanvas_body-list">
-          <!-- Cart items will be injected here -->
-        </ul>
-        <div class="cartOffcanvas_body-total d-flex justify-content-between align-items-center">
-          <span>Total</span>
-          <span class="cartTotal">₹0.00</span>
-        </div>
-        <a class="cartOffcanvas_body-btn btn" href="cart.html">Proceed to checkout</a>
-      </div>
-    </div>
-
-    <!-- Inline JavaScript for Cart Functionality -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Global cart array
-        var cart = [];
-        var cartOffcanvasList = document.querySelector('.cartOffcanvas_body-list');
-        var cartTotalElem = document.querySelector('.cartTotal');
-        var cartCounter = document.getElementById('cart-counter');
-
-        // Function to update cart counter badge
-        function updateCartCounter() {
-          if (cartCounter) {
-            if (cart.length > 0) {
-              cartCounter.textContent = cart.length;
-              cartCounter.style.display = 'inline-block';
-            } else {
-              cartCounter.style.display = 'none';
-            }
-          }
-        }
-
-        // Function to update offcanvas cart display
-        function updateCartDisplay() {
-          if (cartOffcanvasList) {
-            cartOffcanvasList.innerHTML = '';
-            var total = 0;
-            cart.forEach(function (item, index) {
-              var itemTotal = parseFloat(item.price) * item.quantity;
-              total += itemTotal;
-              var li = document.createElement('li');
-              li.className = 'cartOffcanvas_body-list_item d-sm-flex align-items-center';
-              li.innerHTML =
-                '<div class="media">' +
-                  '<a href="product.html" target="_blank" rel="noopener norefferer">' +
-                    '<picture>' +
-                      '<source data-srcset="' + item.image + '" srcset="' + item.image + '" type="image/webp" />' +
-                      '<img class="lazy" data-src="' + item.image + '" src="' + item.image + '" alt="' + item.name + '" />' +
-                    '</picture>' +
-                  '</a>' +
-                '</div>' +
-                '<div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">' +
-                  '<a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">' +
-                    '<span class="main_title-product">' + item.name + '</span>' +
-                  '</a>' +
-                  '<div class="main_price">' +
-                    '<span class="price">₹' + item.price + '</span>' +
-                  '</div>' +
-                  '<div class="qty d-flex align-items-center justify-content-between">' +
-                    '<span class="qty_minus control d-flex align-items-center" data-index="' + index + '"><i class="icon-minus"></i></span>' +
-                    '<input class="qty_amount" type="number" readonly value="' + item.quantity + '" min="1" max="99" />' +
-                    '<span class="qty_plus control d-flex align-items-center" data-index="' + index + '"><i class="icon-plus"></i></span>' +
-                  '</div>' +
-                  '<a class="btn--underline remove-from-cart" href="#" data-index="' + index + '">Remove</a>' +
-                '</div>';
-              cartOffcanvasList.appendChild(li);
+            </section>
+            <!-- JavaScript for Form Handling -->
+            <script>
+            document.getElementById('newsletterForm').addEventListener('submit', async function(event) {
+                event.preventDefault(); // Stop normal form submission
+            
+                const form = event.target;
+                const formData = new FormData(form);
+            
+                try {
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: { 'Accept': 'application/json' }
+                    });
+            
+                    if (response.ok) {
+                        form.reset(); // Clear the form
+                        const successMessage = document.getElementById('newsletterSuccess');
+                        successMessage.style.display = 'block'; // Show success message
+            
+                        // Auto-hide the success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.style.display = 'none';
+                        }, 5000);
+            
+                    } else {
+                        alert('Something went wrong. Please try again.');
+                    }
+                } catch (error) {
+                    alert('Something went wrong. Please try again.');
+                }
             });
-            if (cartTotalElem) {
-              cartTotalElem.textContent = '₹' + total.toFixed(2);
-            }
-            updateCartCounter();
-          }
-        }
-
-        // Attach event listeners for all "Add to Cart" buttons
-        var addToCartButtons = document.querySelectorAll('.add-to-cart');
-        addToCartButtons.forEach(function (btn) {
-          btn.addEventListener('click', function (e) {
-            e.preventDefault();
-            var id = this.getAttribute('data-id');
-            var name = this.getAttribute('data-name');
-            var price = this.getAttribute('data-price');
-            // Get the product image from the closest product container
-            var productItem = this.closest('.products_list-item');
-            var imageElem = productItem.querySelector('img.preview');
-            var image = imageElem ? imageElem.getAttribute('src') : 'img/placeholder.jpg';
-
-            // Check if the product is already in the cart; if so, increment quantity
-            var existingIndex = cart.findIndex(function (item) {
-              return item.id === id;
-            });
-            if (existingIndex > -1) {
-              cart[existingIndex].quantity++;
-            } else {
-              cart.push({ id: id, name: name, price: price, image: image, quantity: 1 });
-            }
-            alert(name + ' has been added to your cart!');
-            updateCartDisplay();
-          });
-        });
-
-        // Delegate events for plus, minus, and remove buttons in the cart list
-        if (cartOffcanvasList) {
-          cartOffcanvasList.addEventListener('click', function (e) {
-            // Remove button handler
-            if (e.target && (e.target.matches('.remove-from-cart') || e.target.closest('.remove-from-cart'))) {
-              e.preventDefault();
-              var removeBtn = e.target.closest('.remove-from-cart');
-              var index = removeBtn.getAttribute('data-index');
-              cart.splice(index, 1);
-              updateCartDisplay();
-            }
-            // Plus button handler
-            else if (e.target && (e.target.matches('.qty_plus') || e.target.closest('.qty_plus'))) {
-              e.preventDefault();
-              var plusBtn = e.target.closest('.qty_plus');
-              var index = plusBtn.getAttribute('data-index');
-              cart[index].quantity++;
-              updateCartDisplay();
-            }
-            // Minus button handler
-            else if (e.target && (e.target.matches('.qty_minus') || e.target.closest('.qty_minus'))) {
-              e.preventDefault();
-              var minusBtn = e.target.closest('.qty_minus');
-              var index = minusBtn.getAttribute('data-index');
-              if (cart[index].quantity > 1) {
-                cart[index].quantity--;
-                updateCartDisplay();
-              }
-            }
-          });
-        }
-      });
-
-      // Update current year in footer
-      document.getElementById("currentYear").innerText = new Date().getFullYear();
-    </script>
-
-    <!-- Your other external JS files (if needed) -->
-    <script src="js/index.min.js"></script>
-  </body>
+            </script>
+            <!-- Newsletter section end -->
+            <!-- FAQ section start -->
+            <section class="faq section--nopb">
+                <div class="container d-flex flex-column-reverse flex-xl-row">
+                    <div class="faq_media">
+                        <picture>
+                            <source data-srcset="img/faq_projector.jpg" srcset="img/faq_projector.jpg" type="image/webp" />
+                            <img class="lazy" data-src="img/faq_projector.jpg" src="img/faq_projector.jpg" alt="FAQ Product Image" />
+                        </picture>
+                    </div>
+                    <div class="faq_main col-xl-6">
+                        <div class="faq_main-header">
+                            <h2 class="faq_main-header_title">Frequently Asked Questions</h2>
+                            <p class="faq_main-header_text">
+                                Find answers about our Galaxy Projectors, Crystal Lamps, and Space Toys. We’re here to help you choose the perfect gift and lighting for every mood!
+                            </p>
+                        </div>
+                        <div class="accordion">
+                            <div class="accordion_component" id="accordionComponent">
+                                <!-- item 1 -->
+                                <div class="accordion_component-item">
+                                    <h4
+                                        class="accordion_component-item_header d-flex justify-content-between align-items-center collapsed"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#item-1"
+                                    >
+                                        How long does the Starry Night Projector battery last?
+                                        <span class="wrapper">
+                                            <i class="icon-caret_down icon"></i>
+                                        </span>
+                                    </h4>
+                                    <div id="item-1" class="accordion-collapse collapse" data-bs-parent="#accordionComponent">
+                                        <div class="accordion_component-item_body">
+                                            The Starry Night Projector offers up to 8 hours of stunning light effects on a full charge. You can also use it continuously with a USB cable connected.
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- item 2 -->
+                                <div class="accordion_component-item">
+                                    <h4
+                                        class="accordion_component-item_header d-flex justify-content-between align-items-center"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#item-2"
+                                    >
+                                        Can I control the Kids Robot Space Projector remotely?
+                                        <span class="wrapper">
+                                            <i class="icon-caret_down transform icon"></i>
+                                        </span>
+                                    </h4>
+                                    <div id="item-2" class="accordion-collapse collapse show" data-bs-parent="#accordionComponent">
+                                        <div class="accordion_component-item_body">
+                                            Yes! Our Kids Robot Space Projector comes with a remote control, allowing you to switch modes, rotate the lights, and adjust brightness easily from a distance.
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- item 3 -->
+                                <div class="accordion_component-item">
+                                    <h4
+                                        class="accordion_component-item_header d-flex justify-content-between align-items-center collapsed"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#item-3"
+                                    >
+                                        Is the Moon Light Crystal Ball safe for kids?
+                                        <span class="wrapper">
+                                            <i class="icon-caret_down icon"></i>
+                                        </span>
+                                    </h4>
+                                    <div id="item-3" class="accordion-collapse collapse" data-bs-parent="#accordionComponent">
+                                        <div class="accordion_component-item_body">
+                                            Absolutely! The Moon Light Crystal Ball is made with non-toxic materials and warm LED lighting, making it completely safe for kids' bedrooms and nurseries.
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <!-- item 4 -->
+                                <div class="accordion_component-item">
+                                    <h4
+                                        class="accordion_component-item_header d-flex justify-content-between align-items-center collapsed"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#item-4"
+                                    >
+                                        Can I gift wrap the products for special occasions?
+                                        <span class="wrapper">
+                                            <i class="icon-caret_down icon"></i>
+                                        </span>
+                                    </h4>
+                                    <div id="item-4" class="accordion-collapse collapse" data-bs-parent="#accordionComponent">
+                                        <div class="accordion_component-item_body">
+                                            Yes, during checkout you can request gift wrapping. We offer beautiful packaging that's perfect for birthdays, holidays, and celebrations!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- FAQ section end -->
+            <!--  Contacts section start -->
+            <section class="contacts section">
+                <div class="container">
+                    <div class="contacts_header">
+                        <h2 class="contacts_header-title">Get in Touch</h2>
+                        <p class="contacts_header-text">
+                            For any inquiries, collaborations, or support — feel free to reach out to us!
+                        </p>
+                    </div>
+                    <ul class="contacts_cards d-md-flex flex-wrap justify-content-center">
+                        <li class="contacts_cards-item col-md-6 col-xl-4" data-aos="fade-up">
+                            <div class="contacts_cards-item_wrapper d-flex flex-column align-items-center">
+                                <h4 class="title">Instagram</h4>
+                                <a class="link" href="https://www.instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                    @sandy_dumps_here
+                                </a>
+                            </div>
+                        </li>
+                        <li class="contacts_cards-item col-md-6 col-xl-4" data-aos="fade-up">
+                            <div class="contacts_cards-item_wrapper d-flex flex-column align-items-center">
+                                <h4 class="title">Email</h4>
+                                <a class="link" href="mailto:sandyalwayssucks@gmail.com">
+                                    sandyalwayssucks@gmail.com
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>    
+            <!--  Contacts section end -->
+        </main>
+        <!-- Homepage content end -->
+        <footer class="footer">
+            <div class="footer_main section">
+                <div class="container d-flex flex-column flex-md-row flex-wrap flex-xl-nowrap justify-content-xl-between">
+                    <div class="footer_main-about footer_main-block col-md-6 col-xl-auto">
+                        <a class="brand footer_main-about_brand d-flex align-items-center" href="index.html">
+                            <span class="logo">
+                                <!-- Logo SVG left as-is -->
+                            </span>
+                            <span class="accent">Pracandy</span>
+                            <span>Store</span>
+                        </a>
+                        <div class="footer_main-about_wrapper">
+                            <p class="text">
+                                Your one-stop destination for magical gifts, creative gadgets, and starry night dreams.
+                            </p>
+                            <ul class="socials d-flex align-items-center accent">
+                                <li class="list-item">
+                                    <a class="link" href="https://instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                        <i class="icon-instagram icon"></i>
+                                    </a>
+                                </li>
+                                <li class="list-item">
+                                    <a class="link" href="mailto:sandyalwayssucks@gmail.com" target="_blank" rel="noopener noreferrer">
+                                        <i class="icon-mail icon"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+        
+                    <div class="footer_main-contacts footer_main-block col-md-6 col-xl-auto">
+                        <h4 class="footer_main-contacts_header footer_main-header">Contacts information</h4>
+                        <ul class="footer_main-contacts_list">
+                            <li class="list-item d-flex align-items-center">
+                                <span class="icon d-flex justify-content-center align-items-center">
+                                    <i class="icon-call"></i>
+                                </span>
+                                <div class="wrapper d-flex flex-column">
+                                    <a class="link" href="tel:+11234567890">+1-123-456-7890</a>
+                                </div>
+                            </li>
+                            <li class="list-item d-flex align-items-center">
+                                <span class="icon d-flex justify-content-center align-items-center">
+                                    <i class="icon-location"></i>
+                                </span>
+                                <div class="wrapper d-flex flex-column">
+                                    <span>India / Online Only</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <div class="footer_main-nav footer_main-block col-md-6 col-xl-auto">
+                        <h4 class="footer_main-nav_header footer_main-header">Explore</h4>
+                        <ul class="footer_main-nav_list d-flex flex-wrap flex-md-column">
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center" href="#">
+                                    <i class="icon-caret_right accent icon"></i>
+                                    Home
+                                </a>
+                            </li>
+                            <!-- <li class="list-item">
+                                <a class="link d-inline-flex align-items-center" href="#">
+                                    <i class="icon-caret_right accent icon"></i>
+                                    Shop
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center" href="#">
+                                    <i class="icon-caret_right accent icon"></i>
+                                    About
+                                </a>
+                            </li> -->
+                            <li class="list-item">
+                                <a class="link d-inline-flex align-items-center" href="#">
+                                    <i class="icon-caret_right accent icon"></i>
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+        
+                    <!-- <div class="footer_main-instagram footer_main-block col-md-6 col-xl-auto">
+                        <h4 class="footer_main-instagram_header footer_main-header">Instagram</h4>
+                        <ul class="footer_main-instagram_list d-grid">
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                    <img class="lazy preview" src="img/review/insta1.jpg" alt="Instagram post" />
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                    <img class="lazy preview" src="img/review/insta2.jpg" alt="Instagram post" />
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                    <img class="lazy preview" src="img/review/insta3.jpg" alt="Instagram post" />
+                                </a>
+                            </li>
+                            <li class="list-item">
+                                <a class="link" href="https://instagram.com/sandy_dumps_here/" target="_blank" rel="noopener noreferrer">
+                                    <img class="lazy preview" src="img/review/insta4.jpg" alt="Instagram post" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+            </div>
+        
+            <div class="footer_secondary">
+                <div class="container d-flex flex-column-reverse flex-md-row justify-content-center justify-content-md-between align-items-md-center">
+                    <p class="footer_secondary-copyright">
+                        PracandyStore &copy; All rights reserved <span id="currentYear"></span>
+                    </p>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="js/common.min.js"></script>
+        <div class="cartOffcanvas offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+            <div class="cartOffcanvas_header d-flex align-items-center justify-content-between">
+                <h2 class="cartOffcanvas_header-title" id="cartOffcanvasLabel">Cart</h2>
+                <button class="cartOffcanvas_header-close" type="button" data-bs-dismiss="offcanvas" aria-label="Close">
+                    <i class="icon-close"></i>
+                </button>
+            </div>
+            <div class="cartOffcanvas_body">
+                <ul class="cartOffcanvas_body-list">
+                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer">
+                                <picture>
+                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
+                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
+                                <span class="main_title-product"> Jonny Chronic - French Macaroon </span>
+                            </a>
+                            <div class="main_price">
+                                <span class="price">$14.98</span>
+                            </div>
+                            <div class="qty d-flex align-items-center justify-content-between">
+                                <span class="qty_minus control disabled d-flex align-items-center">
+                                    <i class="icon-minus"></i>
+                                </span>
+                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
+                                <span class="qty_plus control d-flex align-items-center">
+                                    <i class="icon-plus"></i>
+                                </span>
+                            </div>
+                            <a class="btn--underline" href="#">Remove</a>
+                        </div>
+                    </li>
+                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer">
+                                <picture>
+                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
+                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
+                                <span class="main_title-product"> House Shatter – Durban Poison </span>
+                            </a>
+                            <div class="main_price">
+                                <span class="price">$6.96</span>
+                            </div>
+                            <div class="qty d-flex align-items-center justify-content-between">
+                                <span class="qty_minus control disabled d-flex align-items-center">
+                                    <i class="icon-minus"></i>
+                                </span>
+                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
+                                <span class="qty_plus control d-flex align-items-center">
+                                    <i class="icon-plus"></i>
+                                </span>
+                            </div>
+                            <a class="btn--underline" href="#">Remove</a>
+                        </div>
+                    </li>
+                    <li class="cartOffcanvas_body-list_item d-sm-flex align-items-center">
+                        <div class="media">
+                            <a href="product.html" target="_blank" rel="noopener norefferer">
+                                <picture>
+                                    <source data-srcset="img/placeholder.jpg" srcset="img/placeholder.jpg" type="image/webp" />
+                                    <img class="lazy" data-src="img/placeholder.jpg" src="img/placeholder.jpg" alt="media" />
+                                </picture>
+                            </a>
+                        </div>
+                        <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
+                            <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
+                                <span class="main_title-product"> Natures: CBD Tincture </span>
+                            </a>
+                            <div class="main_price">
+                                <span class="price">$7.49</span>
+                            </div>
+                            <div class="qty d-flex align-items-center justify-content-between">
+                                <span class="qty_minus control disabled d-flex align-items-center">
+                                    <i class="icon-minus"></i>
+                                </span>
+                                <input class="qty_amount" type="number" readonly value="1" min="1" max="99" />
+                                <span class="qty_plus control d-flex align-items-center">
+                                    <i class="icon-plus"></i>
+                                </span>
+                            </div>
+                            <a class="btn--underline" href="#">Remove</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="cartOffcanvas_body-total d-flex justify-content-between align-items-center">
+                    <span>Total</span>
+                    <span class="cartTotal">$29.43</span>
+                </div>
+                <a class="cartOffcanvas_body-btn btn" href="cart.html">Proceed to checkout</a>
+            </div>
+        </div>
+        <script src="js/index.min.js"></script>
+    </body>
 </html>
