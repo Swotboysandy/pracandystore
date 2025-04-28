@@ -48,30 +48,30 @@ export function initModal(settings, customPopupClass) {
     window.addEventListener('resize', close);
 }
 
-export function addToCompare() {
-    document.addEventListener('click', e => {
-        if ((e.target.dataset.trigger !== null && e.target.dataset.trigger === 'compare') || e.target.classList.contains('icon-compare')) {
-            initModal({
-                html: `
-                    <h2 class="title">Product Added to Compare</h2>
-                    <div class="content d-sm-flex">
-                        <div class="content_media">
-                            <picture>
-                                <source srcset="img/placeholder.jpg" type="image/webp">
-                                <img src="img/placeholder.jpg" alt="media">
-                            </picture>
-                        </div>
-                        <div class="content_main d-flex flex-column align-items-center align-items-sm-start">
-                            <h4 class="content_main-title">Pure Sun CBD Oil 1:10</h4>
-                            <span class="content_main-price">$16.90</span>
-                            <a class="content_main-btn btn--underline" href="#">Remove</a>
-                        </div>
-                    </div>
-                `
-            }, 'modal_popup--compare')
-        }
-    })
-}
+// export function addToCompare() {
+//     document.addEventListener('click', e => {
+//         if ((e.target.dataset.trigger !== null && e.target.dataset.trigger === 'compare') || e.target.classList.contains('icon-compare')) {
+//             initModal({
+//                 html: `
+//                     <h2 class="title">Product Added to Compare</h2>
+//                     <div class="content d-sm-flex">
+//                         <div class="content_media">
+//                             <picture>
+//                                 <source srcset="img/placeholder.jpg" type="image/webp">
+//                                 <img src="img/placeholder.jpg" alt="media">
+//                             </picture>
+//                         </div>
+//                         <div class="content_main d-flex flex-column align-items-center align-items-sm-start">
+//                             <h4 class="content_main-title">Pure Sun CBD Oil 1:10</h4>
+//                             <span class="content_main-price">$16.90</span>
+//                             <a class="content_main-btn btn--underline" href="#">Remove</a>
+//                         </div>
+//                     </div>
+//                 `
+//             }, 'modal_popup--compare')
+//         }
+//     })
+// }
 
 export function triggerQuickView() {
     const viewTriggers = document.querySelectorAll('[data-trigger="view"]');
