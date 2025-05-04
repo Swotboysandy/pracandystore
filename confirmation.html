@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Pracandy</title>
+    <title>Order Confirmation - Pracandy</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -26,58 +26,28 @@
 
     <main>
         <div class="container">
-            <h1 class="text-center mt-2">Checkout</h1>
-            
-            <div class="checkout-container">
-                <div class="order-summary">
-                    <h2>Order Summary</h2>
-                    <div id="checkout-items">
+            <div class="confirmation-container">
+                <i class="fas fa-check-circle" style="font-size: 4rem; color: #27ae60;"></i>
+                <h2>Thank You for Your Order!</h2>
+                <p>Your order has been successfully placed.</p>
+                <p>We'll send you an email confirmation with your order details.</p>
+                <div class="order-details">
+                    <h3>Order Summary</h3>
+                    <div id="confirmation-items">
                         <!-- Order items will be dynamically inserted here -->
                     </div>
                     <div class="order-total">
-                        Total: ₹<span id="checkout-total">0</span>
+                        Total Amount: ₹<span id="confirmation-total">0</span>
                     </div>
                 </div>
-                
-                <form id="checkout-form" class="form-container" action="https://getform.io/f/bjjmzzyb" method="POST">
-                    <input type="hidden" name="redirect" value="confirmation.html">
-                    <h2>Delivery Details</h2>
-                    
-                    <div class="form-group">
-                        <label for="full-name">Full Name *</label>
-                        <input type="text" id="full-name" name="Full Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="Phone" pattern="[6-9][0-9]{9}" required>
-                        <small>Enter a valid 10-digit Indian mobile number</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="Email">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Delivery Address *</label>
-                        <textarea id="address" name="Address" rows="4" required></textarea>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h3>Payment Method</h3>
-                        <div class="cod-option">
-                            <input type="radio" id="cod" name="Payment Method" value="Cash on Delivery" checked>
-                            <label for="cod">
-                                <i class="fas fa-money-bill-wave"></i>
-                                Cash on Delivery (COD)
-                            </label>
-                            <p class="cod-info">Pay when you receive your order</p>
-                        </div>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">Place Order</button>
-                </form>
+                <div class="delivery-info">
+                    <h3>Delivery Information</h3>
+                    <p>Your order will be delivered within 3-5 business days.</p>
+                    <p>Payment Method: Cash on Delivery (COD)</p>
+                </div>
+                <div class="text-center mt-2">
+                    <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
             </div>
         </div>
     </main>
@@ -106,15 +76,15 @@
     <script src="js/cart.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const checkoutItems = document.getElementById('checkout-items');
-            const checkoutTotal = document.getElementById('checkout-total');
+            const confirmationItems = document.getElementById('confirmation-items');
+            const confirmationTotal = document.getElementById('confirmation-total');
             
             // Display order summary
             function displayOrderSummary() {
-                checkoutItems.innerHTML = '';
+                confirmationItems.innerHTML = '';
                 
                 if (cart.items.length === 0) {
-                    window.location.href = 'cart.html';
+                    window.location.href = 'index.html';
                     return;
                 }
                 
@@ -128,10 +98,13 @@
                             <p>₹${item.price * item.quantity}</p>
                         </div>
                     `;
-                    checkoutItems.appendChild(orderItem);
+                    confirmationItems.appendChild(orderItem);
                 });
                 
-                checkoutTotal.textContent = cart.getTotal();
+                confirmationTotal.textContent = cart.getTotal();
+                
+                // Clear the cart after displaying the confirmation
+                cart.clearCart();
             }
             
             // Initial display

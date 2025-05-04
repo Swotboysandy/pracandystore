@@ -1,17 +1,34 @@
-// Cart functionality
+// Cart functionality using localStorage
 class Cart {
     constructor() {
-        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
+        this.items = this.loadCart();
         this.updateCartCount();
     }
 
-    addToCart(product) {
-        const existingItem = this.cart.find(item => item.id === product.id);
+    loadCart() {
+        const cart = localStorage.getItem('cart');
+        return cart ? JSON.parse(cart) : [];
+    }
+
+    saveCart() {
+        localStorage.setItem('cart', JSON.stringify(this.items));
+        this.updateCartCount();
+    }
+
+    updateCartCount() {
+        const cartCount = document.querySelector('.cart-count');
+        if (cartCount) {
+            cartCount.textContent = this.items.reduce((total, item) => total + item.quantity, 0);
+        }
+    }
+
+    addItem(product) {
+        const existingItem = this.items.find(item => item.id === product.id);
         
         if (existingItem) {
             existingItem.quantity += 1;
         } else {
-            this.cart.push({
+            this.items.push({
                 id: product.id,
                 name: product.name,
                 price: product.price,
@@ -21,98 +38,74 @@ class Cart {
         }
         
         this.saveCart();
-        this.updateCartCount();
-        this.updateCartUI();
     }
 
-    removeFromCart(productId) {
-        this.cart = this.cart.filter(item => item.id !== productId);
+    removeItem(productId) {
+        this.items = this.items.filter(item => item.id !== productId);
         this.saveCart();
-        this.updateCartCount();
-        this.updateCartUI();
     }
 
-    updateQuantity(productId, newQuantity) {
-        const item = this.cart.find(item => item.id === productId);
+    updateQuantity(productId, quantity) {
+        const item = this.items.find(item => item.id === productId);
         if (item) {
-            item.quantity = Math.max(1, newQuantity);
-            this.saveCart();
-            this.updateCartUI();
+            item.quantity = quantity;
+            if (item.quantity <= 0) {
+                this.removeItem(productId);
+            } else {
+                this.saveCart();
+            }
         }
     }
 
     getTotal() {
-        return this.cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        return this.items.reduce((total, item) => total + (item.price * item.quantity), 0);
     }
 
-    saveCart() {
-        localStorage.setItem('cart', JSON.stringify(this.cart));
-    }
-
-    updateCartCount() {
-        const count = this.cart.reduce((total, item) => total + item.quantity, 0);
-        const cartCount = document.getElementById('cartCount');
-        if (cartCount) {
-            cartCount.textContent = count;
-        }
-    }
-
-    updateCartUI() {
-        const cartList = document.querySelector('.cartOffcanvas_body-list');
-        const cartTotal = document.querySelector('.cartTotal');
-        
-        if (cartList) {
-            cartList.innerHTML = '';
-            this.cart.forEach(item => {
-                const li = document.createElement('li');
-                li.className = 'cartOffcanvas_body-list_item d-sm-flex align-items-center';
-                li.innerHTML = `
-                    <div class="media">
-                        <a href="product.html" target="_blank" rel="noopener norefferer">
-                            <img src="${item.image}" alt="${item.name}" />
-                        </a>
-                    </div>
-                    <div class="main d-flex flex-wrap justify-content-between align-items-end align-items-lg-center">
-                        <a class="main_title" href="product.html" target="_blank" rel="noopener norefferer">
-                            <span class="main_title-product">${item.name}</span>
-                        </a>
-                        <div class="main_price">
-                            <span class="price">$${item.price}</span>
-                        </div>
-                        <div class="qty d-flex align-items-center justify-content-between">
-                            <span class="qty_minus control d-flex align-items-center" onclick="cart.updateQuantity('${item.id}', ${item.quantity - 1})">
-                                <i class="icon-minus"></i>
-                            </span>
-                            <input class="qty_amount" type="number" readonly value="${item.quantity}" min="1" max="99" />
-                            <span class="qty_plus control d-flex align-items-center" onclick="cart.updateQuantity('${item.id}', ${item.quantity + 1})">
-                                <i class="icon-plus"></i>
-                            </span>
-                        </div>
-                        <a class="btn--underline" href="#" onclick="cart.removeFromCart('${item.id}')">Remove</a>
-                    </div>
-                `;
-                cartList.appendChild(li);
-            });
-        }
-
-        if (cartTotal) {
-            cartTotal.textContent = `$${this.getTotal().toFixed(2)}`;
-        }
+    clearCart() {
+        this.items = [];
+        this.saveCart();
     }
 }
 
 // Initialize cart
 const cart = new Cart();
 
-// Add to cart button click handler
-document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('add-to-cart')) {
-        const product = {
-            id: e.target.dataset.id,
-            name: e.target.dataset.name,
-            price: parseFloat(e.target.dataset.price),
-            image: e.target.dataset.image
-        };
-        cart.addToCart(product);
-    }
+// Add to cart button event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const productCard = e.target.closest('.product-card');
+            const product = {
+                id: productCard.dataset.id,
+                name: productCard.querySelector('h3').textContent,
+                price: parseInt(productCard.querySelector('.price').textContent.replace('₹', '')),
+                image: productCard.querySelector('img').src
+            };
+            
+            cart.addItem(product);
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'success-message';
+            successMessage.textContent = 'Added to cart!';
+            successMessage.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #27ae60;
+                color: white;
+                padding: 1rem;
+                border-radius: 5px;
+                z-index: 1000;
+            `;
+            
+            document.body.appendChild(successMessage);
+            
+            setTimeout(() => {
+                successMessage.remove();
+            }, 2000);
+        });
+    });
 }); 
