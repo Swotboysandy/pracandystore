@@ -6,42 +6,6 @@
     <title>Order Confirmation - Pracandy</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-    .order-summary-table {
-        width: 100%;
-        max-width: 500px;
-        margin: 2rem auto 1rem auto;
-        border-collapse: collapse;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 8px #eee;
-        overflow: hidden;
-    }
-    .order-summary-table th, .order-summary-table td {
-        padding: 1rem;
-        text-align: left;
-    }
-    .order-summary-table th {
-        background: #f5f5f5;
-        font-weight: bold;
-    }
-    .order-summary-table tr:not(:last-child) td {
-        border-bottom: 1px solid #eee;
-    }
-    .order-summary-total {
-        font-weight: bold;
-        font-size: 1.1rem;
-        text-align: right;
-        padding: 1rem;
-        background: #f5f5f5;
-    }
-    .order-id-display {
-        margin: 1rem auto;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1.1rem;
-    }
-    </style>
 </head>
 <body>
     <header>
@@ -69,8 +33,8 @@
                 <p>We'll send you an email confirmation with your order details.</p>
                 <div class="order-details">
                     <h3>Order Summary</h3>
-                    <div id="order-summary-table-wrapper">
-                        <!-- Table will be inserted here -->
+                    <div id="confirmation-items">
+                        <!-- Order items will be dynamically inserted here -->
                     </div>
                     <div class="order-total">
                         Total Amount: ₹<span id="confirmation-total">0</span>
@@ -115,12 +79,12 @@
     <script src="js/cart.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const summaryTableWrapper = document.getElementById('order-summary-table-wrapper');
+        const confirmationItems = document.getElementById('confirmation-items');
         const confirmationTotal = document.getElementById('confirmation-total');
         const confirmationOrderId = document.getElementById('confirmation-order-id');
 
         function displayOrderSummary() {
-            summaryTableWrapper.innerHTML = '';
+            confirmationItems.innerHTML = '';
 
             // Get order details from URL parameters
             const urlParams = new URLSearchParams(window.location.search);
@@ -138,29 +102,23 @@
             confirmationTotal.textContent = total;
 
             try {
-                // Parse and display order items as a table
+                // Parse and display order items
                 const items = JSON.parse(decodeURIComponent(orderDetails));
-                let tableHTML = `<table class="order-summary-table">
-                    <tr>
-                        <th>Product</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>Subtotal</th>
-                    </tr>`;
                 items.forEach(item => {
-                    tableHTML += `
-                        <tr>
-                            <td>${item.name}</td>
-                            <td>${item.quantity}</td>
-                            <td>₹${item.price}</td>
-                            <td>₹${item.price * item.quantity}</td>
-                        </tr>`;
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <div class="order-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>₹${item.price * item.quantity}</p>
+                        </div>
+                    `;
+                    confirmationItems.appendChild(orderItem);
                 });
-                tableHTML += `</table>`;
-                summaryTableWrapper.innerHTML = tableHTML;
             } catch (error) {
                 console.error('Error parsing order details:', error);
-                summaryTableWrapper.innerHTML = '<p>Error loading order details</p>';
+                confirmationItems.innerHTML = '<p>Error loading order details</p>';
             }
 
             // Clear the cart after displaying order details

@@ -181,40 +181,43 @@
 
                     // Clear cart before submitting
                     cart.clearCart();
-
-                    // Submit the form to FormSubmit via AJAX
+                    
+                    // Submit the form to FormSubmit
                     const formData = new FormData(checkoutForm);
                     fetch(checkoutForm.action, {
                         method: 'POST',
                         body: formData
                     })
                     .then(response => {
-                        // Show overlay
-                        const overlay = document.createElement('div');
-                        overlay.style.position = 'fixed';
-                        overlay.style.top = 0;
-                        overlay.style.left = 0;
-                        overlay.style.width = '100vw';
-                        overlay.style.height = '100vh';
-                        overlay.style.background = 'rgba(0,0,0,0.7)';
-                        overlay.style.display = 'flex';
-                        overlay.style.flexDirection = 'column';
-                        overlay.style.justifyContent = 'center';
-                        overlay.style.alignItems = 'center';
-                        overlay.style.zIndex = 9999;
-                        overlay.innerHTML = `
-                            <div style="background: #fff; padding: 2rem 3rem; border-radius: 10px; text-align: center;">
-                                <h2 style="color: #27ae60;">Order Placed Successfully!</h2>
-                                <p>Redirecting to confirmation page...</p>
-                            </div>
-                        `;
-                        document.body.appendChild(overlay);
+                        if (response.ok) {
+                            // Show success message
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'success-message';
+                            successMessage.textContent = 'Order placed successfully! Redirecting...';
+                            successMessage.style.cssText = `
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                background: #27ae60;
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 5px;
+                                z-index: 1000;
+                                text-align: center;
+                            `;
+                            document.body.appendChild(successMessage);
 
-                        setTimeout(() => {
-                            window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${total}`;
-                        }, 2500);
+                            // Redirect after 3 seconds
+                            setTimeout(() => {
+                                window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${total}`;
+                            }, 3000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
                     })
                     .catch(error => {
+                        console.error('Error:', error);
                         alert('There was an error submitting your order. Please try again.');
                     });
                 });
