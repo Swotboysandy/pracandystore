@@ -101,20 +101,25 @@
             confirmationOrderId.textContent = orderId;
             confirmationTotal.textContent = total;
 
-            // Parse and display order items
-            const items = JSON.parse(decodeURIComponent(orderDetails));
-            items.forEach(item => {
-                const orderItem = document.createElement('div');
-                orderItem.className = 'order-item';
-                orderItem.innerHTML = `
-                    <div class="order-item-details">
-                        <h4>${item.name}</h4>
-                        <p>Quantity: ${item.quantity}</p>
-                        <p>₹${item.price * item.quantity}</p>
-                    </div>
-                `;
-                confirmationItems.appendChild(orderItem);
-            });
+            try {
+                // Parse and display order items
+                const items = JSON.parse(decodeURIComponent(orderDetails));
+                items.forEach(item => {
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <div class="order-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Quantity: ${item.quantity}</p>
+                            <p>₹${item.price * item.quantity}</p>
+                        </div>
+                    `;
+                    confirmationItems.appendChild(orderItem);
+                });
+            } catch (error) {
+                console.error('Error parsing order details:', error);
+                confirmationItems.innerHTML = '<p>Error loading order details</p>';
+            }
 
             // Clear the cart after displaying order details
             cart.clearCart();

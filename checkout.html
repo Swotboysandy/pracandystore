@@ -171,12 +171,9 @@
                     }
 
                     // Prepare order summary for form
-                    const orderDetails = cart.items.map(item =>
-                        `${item.name} x${item.quantity} - ₹${item.price * item.quantity}`
-                    ).join('\n');
-
+                    const orderDetails = JSON.stringify(cart.items);
                     const orderId = 'ORD-' + Date.now();
-                    localStorage.setItem('order_id', orderId);
+                    const total = cart.getTotal();
 
                     document.getElementById('order-summary').value = orderDetails;
                     document.getElementById('order-id').value = orderId;
@@ -213,7 +210,7 @@
 
                             // Redirect after 3 seconds
                             setTimeout(() => {
-                                window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(JSON.stringify(cart.items))}&total=${cart.getTotal()}`;
+                                window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${total}`;
                             }, 3000);
                         } else {
                             throw new Error('Form submission failed');
