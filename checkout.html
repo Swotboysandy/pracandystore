@@ -75,7 +75,9 @@
                             <p class="cod-info">Pay when you receive your order</p>
                         </div>
                     </div>
-                    
+                    <input type="hidden" name="Order Details" id="order-summary">
+<input type="hidden" name="Order ID" id="order-id">
+
                     <button type="submit" class="submit-btn">Place Order</button>
                 </form>
             </div>
@@ -104,39 +106,81 @@
     </footer>
 
     <script src="js/cart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkoutItems = document.getElementById('checkout-items');
-            const checkoutTotal = document.getElementById('checkout-total');
-            
-            // Display order summary
-            function displayOrderSummary() {
-                checkoutItems.innerHTML = '';
-                
-                if (cart.items.length === 0) {
-                    window.location.href = 'cart.html';
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkoutItems = document.getElementById('checkout-items');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const checkoutForm = document.getElementById('checkout-form');
+
+        function displayOrderSummary() {
+            checkoutItems.innerHTML = '';
+
+            if (cart.items.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+
+            cart.items.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="order-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>₹${item.price * item.quantity}</p>
+                    </div>
+                `;
+                checkoutItems.appendChild(orderItem);
+            });
+
+            checkoutTotal.textContent = cart.getTotal();
+        }
+
+        displayOrderSummary();
+
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const fullName = document.getElementById('full-name').value;
+                const phone = document.getElementById('phone').value;
+                const email = document.getElementById('email').value;
+                const address = document.getElementById('address').value;
+
+                const phoneRegex = /^[6-9]\d{9}$/;
+                if (!phoneRegex.test(phone)) {
+                    alert('Please enter a valid 10-digit Indian mobile number');
                     return;
                 }
-                
-                cart.items.forEach(item => {
-                    const orderItem = document.createElement('div');
-                    orderItem.className = 'order-item';
-                    orderItem.innerHTML = `
-                        <div class="order-item-details">
-                            <h4>${item.name}</h4>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>₹${item.price * item.quantity}</p>
-                        </div>
-                    `;
-                    checkoutItems.appendChild(orderItem);
-                });
-                
-                checkoutTotal.textContent = cart.getTotal();
-            }
-            
-            // Initial display
-            displayOrderSummary();
-        });
-    </script>
+
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+
+                if (!fullName || !address) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+
+                // Prepare order summary for form
+                const orderDetails = cart.items.map(item =>
+                    `${item.name} x${item.quantity} - ₹${item.price * item.quantity}`
+                ).join('\n');
+
+                const orderId = 'ORD-' + Date.now();
+                localStorage.setItem('order_id', orderId);
+
+
+                document.getElementById('order-summary').value = orderDetails;
+                document.getElementById('order-id').value = orderId;
+
+                checkoutForm.submit();
+            });
+        }
+    });
+</script>
+
 </body>
 </html> 

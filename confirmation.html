@@ -39,6 +39,9 @@
                     <div class="order-total">
                         Total Amount: ₹<span id="confirmation-total">0</span>
                     </div>
+                    <div class="order-id-display">
+                        Order ID: <strong id="confirmation-order-id"></strong>
+                    </div>
                 </div>
                 <div class="delivery-info">
                     <h3>Delivery Information</h3>
@@ -75,41 +78,47 @@
 
     <script src="js/cart.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const confirmationItems = document.getElementById('confirmation-items');
-            const confirmationTotal = document.getElementById('confirmation-total');
-            
-            // Display order summary
-            function displayOrderSummary() {
-                confirmationItems.innerHTML = '';
-                
-                if (cart.items.length === 0) {
-                    window.location.href = 'index.html';
-                    return;
-                }
-                
-                cart.items.forEach(item => {
-                    const orderItem = document.createElement('div');
-                    orderItem.className = 'order-item';
-                    orderItem.innerHTML = `
-                        <div class="order-item-details">
-                            <h4>${item.name}</h4>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>₹${item.price * item.quantity}</p>
-                        </div>
-                    `;
-                    confirmationItems.appendChild(orderItem);
-                });
-                
-                confirmationTotal.textContent = cart.getTotal();
-                
-                // Clear the cart after displaying the confirmation
-                cart.clearCart();
-            }
-            
-            // Initial display
-            displayOrderSummary();
+    document.addEventListener('DOMContentLoaded', () => {
+    const confirmationItems = document.getElementById('confirmation-items');
+    const confirmationTotal = document.getElementById('confirmation-total');
+    const confirmationOrderId = document.getElementById('confirmation-order-id');
+
+    function displayOrderSummary() {
+        confirmationItems.innerHTML = '';
+
+        if (cart.items.length === 0) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        cart.items.forEach(item => {
+            const orderItem = document.createElement('div');
+            orderItem.className = 'order-item';
+            orderItem.innerHTML = `
+                <div class="order-item-details">
+                    <h4>${item.name}</h4>
+                    <p>Quantity: ${item.quantity}</p>
+                    <p>₹${item.price * item.quantity}</p>
+                </div>
+            `;
+            confirmationItems.appendChild(orderItem);
         });
+
+        confirmationTotal.textContent = cart.getTotal();
+
+        // 🔑 Display order ID
+        const orderId = localStorage.getItem('order_id') || 'N/A';
+        if (confirmationOrderId) {
+            confirmationOrderId.textContent = orderId;
+        }
+
+        // ✅ Clear cart after use
+        cart.clearCart();
+        localStorage.removeItem('order_id');
+    }
+
+    displayOrderSummary();
+});
     </script>
 </body>
 </html> 

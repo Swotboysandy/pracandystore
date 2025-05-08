@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             successMessage.textContent = 'Added to cart!';
             successMessage.style.cssText = `
                 position: fixed;
-                top: 20px;
+                top: 50px;
                 right: 20px;
                 background: #27ae60;
                 color: white;
