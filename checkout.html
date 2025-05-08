@@ -180,8 +180,44 @@
                     // Clear cart before submitting
                     cart.clearCart();
                     
-                    // Redirect to confirmation page with order details
-                    window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${cart.getTotal()}`;
+                    // Submit the form to FormSubmit
+                    const formData = new FormData(checkoutForm);
+                    fetch(checkoutForm.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Show success message
+                            const successMessage = document.createElement('div');
+                            successMessage.className = 'success-message';
+                            successMessage.textContent = 'Order placed successfully! Redirecting...';
+                            successMessage.style.cssText = `
+                                position: fixed;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                background: #27ae60;
+                                color: white;
+                                padding: 2rem;
+                                border-radius: 5px;
+                                z-index: 1000;
+                                text-align: center;
+                            `;
+                            document.body.appendChild(successMessage);
+
+                            // Redirect after 3 seconds
+                            setTimeout(() => {
+                                window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(JSON.stringify(cart.items))}&total=${cart.getTotal()}`;
+                            }, 3000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error submitting your order. Please try again.');
+                    });
                 });
             }
         });
