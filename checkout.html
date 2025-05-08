@@ -177,7 +177,11 @@
                     document.getElementById('order-id').value = orderId;
                     document.getElementById('cc-email').value = email;
 
-                    checkoutForm.submit();
+                    // Clear cart before submitting
+                    cart.clearCart();
+                    
+                    // Redirect to confirmation page with order details
+                    window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${cart.getTotal()}`;
                 });
             }
         });

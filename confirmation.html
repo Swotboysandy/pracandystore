@@ -79,46 +79,49 @@
     <script src="js/cart.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-    const confirmationItems = document.getElementById('confirmation-items');
-    const confirmationTotal = document.getElementById('confirmation-total');
-    const confirmationOrderId = document.getElementById('confirmation-order-id');
+        const confirmationItems = document.getElementById('confirmation-items');
+        const confirmationTotal = document.getElementById('confirmation-total');
+        const confirmationOrderId = document.getElementById('confirmation-order-id');
 
-    function displayOrderSummary() {
-        confirmationItems.innerHTML = '';
+        function displayOrderSummary() {
+            confirmationItems.innerHTML = '';
 
-        if (cart.items.length === 0) {
-            window.location.href = 'index.html';
-            return;
-        }
+            // Get order details from URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            const orderDetails = urlParams.get('orderDetails');
+            const total = urlParams.get('total');
 
-        cart.items.forEach(item => {
-            const orderItem = document.createElement('div');
-            orderItem.className = 'order-item';
-            orderItem.innerHTML = `
-                <div class="order-item-details">
-                    <h4>${item.name}</h4>
-                    <p>Quantity: ${item.quantity}</p>
-                    <p>₹${item.price * item.quantity}</p>
-                </div>
-            `;
-            confirmationItems.appendChild(orderItem);
-        });
+            if (!orderId || !orderDetails || !total) {
+                window.location.href = 'index.html';
+                return;
+            }
 
-        confirmationTotal.textContent = cart.getTotal();
-
-        // 🔑 Display order ID
-        const orderId = localStorage.getItem('order_id') || 'N/A';
-        if (confirmationOrderId) {
+            // Display order details
             confirmationOrderId.textContent = orderId;
+            confirmationTotal.textContent = total;
+
+            // Parse and display order items
+            const items = JSON.parse(decodeURIComponent(orderDetails));
+            items.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="order-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>₹${item.price * item.quantity}</p>
+                    </div>
+                `;
+                confirmationItems.appendChild(orderItem);
+            });
+
+            // Clear the cart after displaying order details
+            cart.clearCart();
         }
 
-        // ✅ Clear cart after use
-        cart.clearCart();
-        localStorage.removeItem('order_id');
-    }
-
-    displayOrderSummary();
-});
+        displayOrderSummary();
+    });
     </script>
 </body>
 </html> 
