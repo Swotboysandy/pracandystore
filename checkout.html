@@ -146,6 +146,8 @@
 
             if (checkoutForm) {
                 checkoutForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
                     const fullName = document.getElementById('full-name').value;
                     const phone = document.getElementById('phone').value;
                     const email = document.getElementById('email').value;
@@ -154,20 +156,17 @@
                     const phoneRegex = /^[6-9]\d{9}$/;
                     if (!phoneRegex.test(phone)) {
                         alert('Please enter a valid 10-digit Indian mobile number');
-                        e.preventDefault();
                         return;
                     }
 
                     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                     if (!emailRegex.test(email)) {
                         alert('Please enter a valid email address');
-                        e.preventDefault();
                         return;
                     }
 
                     if (!fullName || !address) {
                         alert('Please fill in all required fields');
-                        e.preventDefault();
                         return;
                     }
 
@@ -182,6 +181,42 @@
 
                     // Clear cart before submitting
                     cart.clearCart();
+
+                    // Submit the form to FormSubmit via AJAX
+                    const formData = new FormData(checkoutForm);
+                    fetch(checkoutForm.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        // Show overlay
+                        const overlay = document.createElement('div');
+                        overlay.style.position = 'fixed';
+                        overlay.style.top = 0;
+                        overlay.style.left = 0;
+                        overlay.style.width = '100vw';
+                        overlay.style.height = '100vh';
+                        overlay.style.background = 'rgba(0,0,0,0.7)';
+                        overlay.style.display = 'flex';
+                        overlay.style.flexDirection = 'column';
+                        overlay.style.justifyContent = 'center';
+                        overlay.style.alignItems = 'center';
+                        overlay.style.zIndex = 9999;
+                        overlay.innerHTML = `
+                            <div style="background: #fff; padding: 2rem 3rem; border-radius: 10px; text-align: center;">
+                                <h2 style="color: #27ae60;">Order Placed Successfully!</h2>
+                                <p>Redirecting to confirmation page...</p>
+                            </div>
+                        `;
+                        document.body.appendChild(overlay);
+
+                        setTimeout(() => {
+                            window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${total}`;
+                        }, 2500);
+                    })
+                    .catch(error => {
+                        alert('There was an error submitting your order. Please try again.');
+                    });
                 });
             }
         });
