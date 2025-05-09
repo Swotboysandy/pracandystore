@@ -32,7 +32,7 @@ class Cart {
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                image: product.image,
+                image_url: product.image, // ✅ Use image_url key for consistency
                 quantity: 1
             });
         }
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: productCard.dataset.id,
                 name: productCard.querySelector('h3').textContent,
                 price: parseInt(productCard.querySelector('.price').textContent.replace('₹', '')),
-                image: productCard.querySelector('img').src
+                image: productCard.querySelector('img').getAttribute('data-src') || productCard.querySelector('img').src // Ensure correct image path
             };
             
             cart.addItem(product);
