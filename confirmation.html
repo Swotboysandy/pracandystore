@@ -177,50 +177,54 @@
         const confirmationTotal = document.getElementById('confirmation-total');
         const confirmationOrderId = document.getElementById('confirmation-order-id');
         const confirmationPaymentMethod = document.getElementById('confirmation-payment-method');
-
+    
         function displayOrderSummary() {
             confirmationItems.innerHTML = '';
-
+    
             const urlParams = new URLSearchParams(window.location.search);
             const orderId = urlParams.get('orderId');
             const orderDetails = urlParams.get('orderDetails');
             const total = urlParams.get('total');
             const paymentMethod = urlParams.get('paymentMethod') || 'Cash on Delivery (COD)';
-
+    
             if (!orderId || !orderDetails || !total) {
                 window.location.href = 'index.html';
                 return;
             }
-
+    
             confirmationOrderId.textContent = orderId;
             confirmationTotal.textContent = total;
             confirmationPaymentMethod.textContent = paymentMethod;
-
+    
             try {
                 const items = JSON.parse(decodeURIComponent(orderDetails));
                 items.forEach(item => {
                     const orderItem = document.createElement('div');
                     orderItem.className = 'order-item';
                     orderItem.innerHTML = `
-                        <img src="${item.image_url}" alt="${item.name}">
+                        <img src="${item.image_url}" alt="${item.name}" style="width:80px;height:80px;object-fit:cover;margin-right:20px;border-radius:6px;">
                         <div class="order-item-details">
                             <h4>${item.name}</h4>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>₹${item.price * item.quantity}</p>
+                            <p>Quantity: ${item.units}</p>
+                            <p>₹${item.price}</p>
                         </div>
                     `;
                     confirmationItems.appendChild(orderItem);
                 });
+    
+                // ✅ Clear cart after displaying items
+                if (typeof cart !== 'undefined') {
+                    cart.clearCart();
+                }
+    
             } catch (error) {
                 console.error('Error parsing order details:', error);
                 confirmationItems.innerHTML = '<p>Error loading order details</p>';
             }
-
-            cart.clearCart();
         }
-
+    
         displayOrderSummary();
     });
-</script>
+    </script>
 </body>
 </html>
