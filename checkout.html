@@ -14,199 +14,181 @@
     </script>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <h1>Pracandy</h1>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="faq.html">FAQs</a>
-                <a href="cart.html" class="cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <h1>Pracandy</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="faq.html">FAQs</a>
+            <a href="cart.html" class="cart-link">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+    </nav>
+</header>
 
-    <main>
-        <div class="container">
-            <h1 class="text-center mt-2">Checkout</h1>
-            
-            <div class="checkout-container">
-                <div class="order-summary">
-                    <h2>Order Summary</h2>
-                    <div id="checkout-items">
-                        <!-- Order items will be dynamically inserted here -->
-                    </div>
-                    <div class="order-total">
-                        Total: ₹<span id="checkout-total">0</span>
+<main>
+    <div class="container">
+        <h1 class="text-center mt-2">Checkout</h1>
+        <div class="checkout-container">
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="checkout-items"></div>
+                <div class="order-total">
+                    Total: ₹<span id="checkout-total">0</span>
+                </div>
+            </div>
+
+            <form id="checkout-form" class="form-container">
+                <h2>Delivery Details</h2>
+                <div class="form-group">
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" name="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="Phone" pattern="[6-9][0-9]{9}" required>
+                    <small>Enter a valid 10-digit Indian mobile number</small>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="Email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address *</label>
+                    <textarea id="address" name="Address" rows="4" required></textarea>
+                </div>
+                <div class="payment-method">
+                    <h3>Payment Method</h3>
+                    <div class="cod-option">
+                        <input type="radio" id="cod" name="Payment Method" value="Cash on Delivery" checked>
+                        <label for="cod">
+                            <i class="fas fa-money-bill-wave"></i> Cash on Delivery (COD)
+                        </label>
+                        <p class="cod-info">Pay when you receive your order</p>
                     </div>
                 </div>
-                
-                <form id="checkout-form" class="form-container" action="https://formsubmit.co/sandyalwayssucks@gmail.com" method="POST">
-                    <input type="hidden" name="redirect" value="confirmation.html">
-                    <input type="hidden" name="_subject" value="New Order from Pracandy Store">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_autoresponse" value="Thank you for your order! Your order has been received and is being processed. We will contact you shortly with more details.">
-                    <input type="hidden" name="_next" value="confirmation.html">
-                    <input type="hidden" name="_captcha" value="false">
-                    <h2>Delivery Details</h2>
-                    
-                    <div class="form-group">
-                        <label for="full-name">Full Name *</label>
-                        <input type="text" id="full-name" name="Full Name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="Phone" pattern="[6-9][0-9]{9}" required>
-                        <small>Enter a valid 10-digit Indian mobile number</small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="Email">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Delivery Address *</label>
-                        <textarea id="address" name="Address" rows="4" required></textarea>
-                    </div>
-                    
-                    <div class="payment-method">
-                        <h3>Payment Method</h3>
-                        <div class="cod-option">
-                            <input type="radio" id="cod" name="Payment Method" value="Cash on Delivery" checked>
-                            <label for="cod">
-                                <i class="fas fa-money-bill-wave"></i>
-                                Cash on Delivery (COD)
-                            </label>
-                            <p class="cod-info">Pay when you receive your order</p>
-                        </div>
-                    </div>
-                    <input type="hidden" name="Order Details" id="order-summary">
-                    <input type="hidden" name="Order ID" id="order-id">
-                    <input type="hidden" name="_cc" id="cc-email">
-
-                    <button type="submit" class="submit-btn">Place Order</button>
-                </form>
-            </div>
+                <button type="submit" class="submit-btn">Place Order</button>
+            </form>
         </div>
-    </main>
+    </div>
+</main>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>About Pracandy</h4>
-                <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Us</h4>
-                <p>Email: support@pracandy.com</p>
-                <p>Phone: +91 1234567890</p>
-            </div>
-            <div class="footer-section">
-                <h4>Payment Methods</h4>
-                <p>Cash on Delivery (COD) Available</p>
-            </div>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h4>About Pracandy</h4>
+            <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Pracandy. All rights reserved.</p>
+        <div class="footer-section">
+            <h4>Contact Us</h4>
+            <p>Email: support@pracandy.com</p>
+            <p>Phone: +91 1234567890</p>
         </div>
-    </footer>
+        <div class="footer-section">
+            <h4>Payment Methods</h4>
+            <p>Cash on Delivery (COD) Available</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Pracandy. All rights reserved.</p>
+    </div>
+</footer>
 
-    <script src="js/cart.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkoutItems = document.getElementById('checkout-items');
-            const checkoutTotal = document.getElementById('checkout-total');
-            const checkoutForm = document.getElementById('checkout-form');
+<script src="js/cart.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkoutItems = document.getElementById('checkout-items');
+        const checkoutTotal = document.getElementById('checkout-total');
+        const checkoutForm = document.getElementById('checkout-form');
 
-            function displayOrderSummary() {
-                checkoutItems.innerHTML = '';
-
-                if (cart.items.length === 0) {
-                    window.location.href = 'cart.html';
-                    return;
-                }
-
-                cart.items.forEach(item => {
-                    const orderItem = document.createElement('div');
-                    orderItem.className = 'order-item';
-                    orderItem.innerHTML = `
-                        <div class="order-item-details">
-                            <h4>${item.name}</h4>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>₹${item.price * item.quantity}</p>
-                        </div>
-                    `;
-                    checkoutItems.appendChild(orderItem);
-                });
-
-                checkoutTotal.textContent = cart.getTotal();
+        function displayOrderSummary() {
+            checkoutItems.innerHTML = '';
+            if (cart.items.length === 0) {
+                window.location.href = 'cart.html';
+                return;
             }
 
-            displayOrderSummary();
+            cart.items.forEach(item => {
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="order-item-details">
+                        <h4>${item.name}</h4>
+                        <p>Quantity: ${item.quantity}</p>
+                        <p>₹${item.price * item.quantity}</p>
+                    </div>
+                `;
+                checkoutItems.appendChild(orderItem);
+            });
 
-            if (checkoutForm) {
-                    checkoutForm.addEventListener('submit', (e) => {
-                        e.preventDefault();
+            checkoutTotal.textContent = cart.getTotal();
+        }
 
-                        const fullName = document.getElementById('full-name').value;
-                        const phone = document.getElementById('phone').value;
-                        const email = document.getElementById('email').value;
-                        const address = document.getElementById('address').value;
-                        const paymentMethod = document.querySelector('input[name="Payment Method"]:checked').value;
+        displayOrderSummary();
 
-                        const phoneRegex = /^[6-9]\d{9}$/;
-                        if (!phoneRegex.test(phone)) {
-                        alert('Please enter a valid 10-digit Indian mobile number');
-                        return;
-                        }
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                        if (email && !emailRegex.test(email)) {
-                        alert('Please enter a valid email address');
-                        return;
-                        }
+            const fullName = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const paymentMethod = document.querySelector('input[name="Payment Method"]:checked').value;
 
-                        if (!fullName || !address) {
-                        alert('Please fill in all required fields');
-                        return;
-                        }
+            const phoneRegex = /^[6-9]\d{9}$/;
+            if (!phoneRegex.test(phone)) {
+                alert('Please enter a valid 10-digit Indian mobile number');
+                return;
+            }
 
-                        const orderDetails = JSON.stringify(cart.items, null, 2);
-                        const orderId = 'ORD-' + Date.now();
-                        const total = cart.getTotal();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email && !emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
 
-                        const params = {
-                        order_id: orderId,
-                        full_name: fullName,
-                        phone: phone,
-                        email: email,
-                        address: address,
-                        payment_method: paymentMethod,
-                        order_details: orderDetails,
-                        total: total
-                        };
+            if (!fullName || !address) {
+                alert('Please fill in all required fields');
+                return;
+            }
 
-                        emailjs.send("service_osgf1uq", "template_9u39r3c", params)
-                        .then(function(response) {
-                            alert("Order placed successfully! Redirecting...");
-                            cart.clearCart();
-                            setTimeout(() => {
-                            window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(orderDetails)}&total=${total}`;
-                            }, 2000);
-                        }, function(error) {
-                            console.error('FAILED...', error);
-                            alert('Error sending email. Please try again.');
-                        });
-                    });
-                }
+            const orderId = 'ORD-' + Date.now();
+            const total = cart.getTotal();
+
+            const orderDetails = cart.items.map(item => ({
+                name: item.name,
+                units: item.quantity,
+                price: item.price * item.quantity
+            }));
+
+            const params = {
+                order_id: orderId,
+                full_name: fullName,
+                phone: phone,
+                email: email,
+                address: address,
+                payment_method: paymentMethod,
+                total: total,
+                orders: orderDetails
+            };
+
+            emailjs.send("service_osgf1uq", "template_9u39r3c", params)
+                .then(function(response) {
+                    alert("Order placed successfully! Redirecting...");
+                    cart.clearCart();
+                    setTimeout(() => {
+                        window.location.href = `confirmation.html?orderId=${orderId}&total=${total}`;
+                    }, 2000);
+                }, function(error) {
+                    console.error('FAILED...', error);
+                    alert('Error sending email. Please try again.');
+                });
         });
-    </script>
-
+    });
+</script>
 </body>
 </html>
