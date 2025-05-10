@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Pracandy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .reviews-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .reviews-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .review-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .review-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .review-content {
+            padding: 1.5rem;
+        }
+
+        .review-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .review-rating {
+            color: #ffd700;
+            margin-bottom: 1rem;
+        }
+
+        .review-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        .video-review {
+            grid-column: span 2;
+        }
+
+        .review-video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .video-review {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <h1>Pracandy</h1>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="faq.html">FAQs</a>
+                <a href="cart.html" class="cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="reviews-container">
+            <div class="reviews-header">
+                <h2>Customer Reviews</h2>
+                <p>See what our happy customers are saying about our products</p>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Space Projector Reviews -->
+                <div class="review-card">
+                    <img src="img/Files/HD_images.jpg" alt="Space Projector Effect" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">बहुत बढ़िया इफेक्ट्स!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">मेरे बेडरूम में ये प्रोजेक्टर बहुत अच्छा लग रहा है। रात को सोते समय तारे देखने का मजा ही कुछ और है। बैटरी लाइफ भी अच्छी है।</p>
+                        <div class="review-meta">
+                            <span>Rahul Sharma</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <img src="img/Files/HD_images_2.jpg" alt="Space Projector Close View" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">ಚೆನ್ನಾಗಿದೆ!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">ಈ ಪ್ರೊಜೆಕ್ಟರ್ ನನ್ನ ಕೋಣೆಯನ್ನು ಸುಂದರವಾಗಿ ಮಾಡಿದೆ. ರಾತ್ರಿ ಸಮಯದಲ್ಲಿ ಬಳಸಲು ತುಂಬಾ ಒಳ್ಳೆಯದು. ಗುಣಮಟ್ಟ ಉತ್ತಮವಾಗಿದೆ!</p>
+                        <div class="review-meta">
+                            <span>Sunil Gowda</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Moon Light Reviews -->
+                <div class="review-card">
+                    <img src="img/Files/on_desk.jpg" alt="Moon Light on Desk" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">Perfect for my workspace!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">The Moon Light Crystal Ball creates such a peaceful ambiance in my workspace. The warm glow helps me focus and adds a beautiful decorative element to my desk.</p>
+                        <div class="review-meta">
+                            <span>Sarah K.</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <img src="img/Files/on moon.jpg" alt="Moon Light Effect" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">அருமையான விளைவுகள்!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="review-text">இந்த லைட் என் அறையை மிக அழகாக மாற்றியுள்ளது. பகலும் இரவும் விளைவுகள் மிக அருமையாக உள்ளன. வாங்க பரிந்துரைக்கிறேன்!</p>
+                        <div class="review-meta">
+                            <span>Karthik Sundar</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kids Room Reviews -->
+                <div class="review-card">
+                    <img src="img/Files/kids.jpg" alt="Kids enjoying the projector" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">मुलांना खूप आवडलं!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">माझ्या मुलांना हा स्पेस प्रोजेक्टर खूप आवडला. रात्री झोपताना तारे आणि आकाशगंगा बघायला मजा येते. क्वालिटी चांगली आहे आणि वापरण्यास सोपा आहे!</p>
+                        <div class="review-meta">
+                            <span>Priya Patil</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Showcase Reviews -->
+                <div class="review-card">
+                    <img src="img/Files/2nd_product.jpg" alt="Product showcase" class="review-image">
+                    <div class="review-content">
+                        <h3 class="review-title">చాలా బాగుంది!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">నా సోదరి పుట్టినరోజుకి బహుమతిగా తీసుకున్నాను. ప్యాకేజింగ్ చాలా అందంగా ఉంది. నాకు చాలా నచ్చింది!</p>
+                        <div class="review-meta">
+                            <span>Rajesh Reddy</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Reviews -->
+                <div class="review-card video-review">
+                    <video class="review-video" controls>
+                        <source src="img/Files/Star Projector Night Lamp _ Lamp for Kids Room .mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="review-content">
+                        <h3 class="review-title">Amazing Night Lamp!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">This night lamp has transformed my kids' room into a magical space. The star projection is so clear and beautiful. Perfect for bedtime stories!</p>
+                        <div class="review-meta">
+                            <span>Neha Patel</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card video-review">
+                    <video class="review-video" controls>
+                        <source src="img/Files/3d moon crystal ball available.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="review-content">
+                        <h3 class="review-title">Beautiful Crystal Ball!</h3>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="review-text">The 3D moon effect is mesmerizing. Perfect for meditation and creating a peaceful atmosphere. The quality is excellent!</p>
+                        <div class="review-meta">
+                            <span>Arun Kumar</span>
+                            <span>Verified Purchase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Pracandy</h4>
+                <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p>Email: support@pracandy.com</p>
+                <p>Phone: +91 1234567890</p>
+            </div>
+            <div class="footer-section">
+                <h4>Payment Methods</h4>
+                <p>Cash on Delivery (COD) Available</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Pracandy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
