@@ -1,126 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pracandy - Best Deals on Trending Gadgets</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pracandy - Best Deals on Trending Gadgets</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* ----- Navbar ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .cart-link {
+      position: relative;
+      font-size: 1.25rem;
+      color: #333;
+    }
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: .75rem;
+    }
+
+    /* ----- Bottom Nav for Mobile ----- */
+    .bottom-nav {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      /* hide non-cart links up top */
+      .nav-links a:not(.cart-link) {
+        display: none;
+      }
+      /* show bottom nav */
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background: #fff;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        justify-content: space-around;
+        padding: .5rem 0;
+        z-index: 100;
+      }
+      .bottom-nav a {
+        flex: 1;
+        text-align: center;
+        color: #333;
+        text-decoration: none;
+        font-size: .9rem;
+      }
+      .bottom-nav a i {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: .25rem;
+      }
+      body {
+        padding-bottom: 60px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <h1>Pracandy</h1>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="reviews.html">Reviews</a>
-                <a href="faq.html">FAQs</a>
-                <a href="cart.html" class="cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-        </nav>
-    </header>
 
-    <main>
-        <section class="hero">
-            <h2>Best Deals on Trending Gadgets</h2>
-            <p>Shop now and get amazing deals with Cash on Delivery!</p>
-        </section>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><h1>Pracandy</h1></a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
 
-        <section class="products">
-            <div class="product-grid">
-                <!-- Product 1 -->
-                <div class="product-card" data-id="1">
-                    <img data-src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector" loading="lazy" class="lazy">
-                    <h3>Kids Robot Space Projector</h3>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                    <div class="features">
-                        <span>Remote Controlled</span>
-                        <span>360° Rotation</span>
-                        <span>Colorful Galaxy Effect</span>
-                    </div>
-                    <div class="price">₹699</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <h2>Best Deals on Trending Gadgets</h2>
+      <p>Shop now and get amazing deals with Cash on Delivery!</p>
+    </section>
 
-                <!-- Product 2 -->
-                <div class="product-card" data-id="2">
-                    <img data-src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball" loading="lazy" class="lazy">
-                    <h3>Moon Light Crystal Ball</h3>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <div class="features">
-                        <span>Warm LED Ambient Light</span>
-                        <span>Premium Glass & Wood</span>
-                    </div>
-                    <div class="price">₹269</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card" data-id="3">
-                    <img data-src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector" loading="lazy" class="lazy">
-                    <h3>Starry Night Galaxy Projector</h3>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="features">
-                        <span>6 Color Light Effects</span>
-                        <span>USB or Battery Powered</span>
-                    </div>
-                    <div class="price">₹399</div>
-                    <button class="add-to-cart">Add to Cart</button>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>About Pracandy</h4>
-                <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
-            </div>
-            <div class="footer-section">
-                <h4>Contact Us</h4>
-                <p>Email: support@pracandy.com</p>
-                <p>Phone: +91 1234567890</p>
-            </div>
-            <div class="footer-section">
-                <h4>Payment Methods</h4>
-                <p>Cash on Delivery (COD) Available</p>
-            </div>
+    <!-- Products -->
+    <section class="products">
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <div class="product-card" data-id="1">
+          <img src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector">
+          <h3>Kids Robot Space Projector</h3>
+           <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <div class="features">
+            <span>Remote Controlled</span>
+            <span>360° Rotation</span>
+            <span>Colorful Galaxy Effect</span>
+          </div>
+          <div class="price">₹699</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Pracandy. All rights reserved.</p>
+        <!-- Product 2 -->
+        <div class="product-card" data-id="2">
+          <img src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball">
+          <h3>Moon Light Crystal Ball</h3>
+           <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <div class="features">
+            <span>Warm LED Ambient Light</span>
+            <span>Ambience</span>
+            <span>Premium Glass & Wood</span>
+          </div>
+          <div class="price">₹269</div>
+          <button class="add-to-cart">Add to Cart</button>
         </div>
-    </footer>
+        <!-- Product 3 -->
+        <div class="product-card" data-id="3">
+          <img src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector">
+          <h3>Starry Night Galaxy Projector</h3>
+           <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="features">
+            <span>6 Color Light Effects</span>
+            <span>Colorful Galaxy Effect</span>
+            <span>USB or Battery Powered</span>
+          </div>
+          <div class="price">₹399</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script src="js/cart.js"></script>
-    <script src="js/main.js"></script>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Pracandy</h4>
+        <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: info.pracandystore@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h4>Payment Methods</h4>
+        <p>Cash on Delivery (COD) Available</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Pracandy. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <form id="checkout-form" action="https://formsubmit.co/pracandy2706@gmail.com" method="POST">
-    </form>
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="reviews.html"><i class="fas fa-star"></i>Reviews</a>
+    <a href="faq.html"><i class="fas fa-question-circle"></i>FAQs</a>
+  </nav>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
 </body>
-</html> 
+</html>

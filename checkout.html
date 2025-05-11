@@ -1,198 +1,263 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Pracandy</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-    (function() {
-        emailjs.init("6QeEY3GqrPTRvh_0-");
-    })();
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Pracandy</title>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Checkout-specific overrides -->
+  <style>
+    body { background-color: #ffffff; }
+    .checkout-note {
+      text-align: center; font-size: 1rem; font-weight: 500;
+      color: #2563eb; margin-top: 0.5rem;
+    }
+    .checkout-container {
+      width: 90%; max-width: 900px; margin: 2rem auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .checkout-container { grid-template-columns: 1fr; }
+    }
+    .order-summary, .form-container {
+      background: #f8fafc; border: 1px solid #e2e8f0;
+      border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      padding: 1.5rem; display: flex; flex-direction: column;
+    }
+    .order-summary h2, .form-container h2 {
+      margin: 0 0 1rem; font-weight: 600; font-size: 1.5rem;
+      text-align: center;
+    }
+    #checkout-items { flex: 1; display: flex; flex-direction: column; }
+    .order-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 0; font-size: 1rem;
+    }
+    .order-item:not(:last-child) { border-bottom: 1px solid #e2e8f0; }
+    .order-item-details { display: flex; flex-direction: column; }
+    .order-item-details .name { font-weight: 500; margin-bottom: 0.25rem; }
+    .order-item-details .qty { color: #64748b; font-size: 0.9rem; }
+    .order-item .price { font-weight: 600; }
+    .order-total {
+      margin-top: 1rem; text-align: right; font-weight: 600; font-size: 1.25rem;
+    }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; margin-bottom: 0.25rem; font-weight: 500;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 0.5rem; border: 1px solid #cbd5e1;
+      border-radius: 0.25rem; font-family: inherit; font-size: 1rem;
+    }
+    .form-group small {
+      display: block; margin-top: 0.25rem;
+      color: #64748b; font-size: 0.875rem;
+    }
+    .payment-method { margin-bottom: 1.5rem; }
+    .payment-method h3 { margin-bottom: 0.5rem; font-weight: 600; }
+    .cod-option { display: flex; align-items: center; gap: 0.5rem; }
+    .cod-info {
+      margin-left: 1.75rem; font-size: 0.875rem; color: #64748b;
+    }
+    .submit-btn {
+      align-self: center; background: #2563eb; color: #fff; border: none;
+      padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s; margin-top: 1rem;
+    }
+    .submit-btn:hover { background: #1d4ed8; }
+    #pincode-info { font-size:0.9rem; color:#64748b; margin-top:0.25rem; }
+    #pincode-info.error { color: #ef4444; }
+  </style>
 </head>
+
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <h1>Pracandy</h1>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="faq.html">FAQs</a>
-                <a href="cart.html" class="cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" style="text-decoration:none; color:inherit;">
+          <h1>Pracandy</h1>
+        </a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i><span class="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+    <div class="checkout-note">Checkout is that simple.</div>
+  </header>
 
-<main>
-    <div class="container">
-        <h1 class="text-center mt-2">Checkout</h1>
-        <div class="checkout-container">
-            <div class="order-summary">
-                <h2>Order Summary</h2>
-                <div id="checkout-items"></div>
-                <div class="order-total">
-                    Total: ₹<span id="checkout-total">0</span>
-                </div>
-            </div>
+  <main>
+    <div class="checkout-container">
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <h2>Order Summary</h2>
+        <div id="checkout-items"></div>
+        <div class="order-total">Total: ₹<span id="checkout-total">0</span></div>
+      </div>
 
-            <form id="checkout-form" class="form-container">
-                <h2>Delivery Details</h2>
-                <div class="form-group">
-                    <label for="full-name">Full Name *</label>
-                    <input type="text" id="full-name" name="Full Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" name="Phone" pattern="[6-9][0-9]{9}" required>
-                    <small>Enter a valid 10-digit Indian mobile number</small>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="Email">
-                </div>
-                <div class="form-group">
-                    <label for="address">Delivery Address *</label>
-                    <textarea id="address" name="Address" rows="4" required></textarea>
-                </div>
-                <div class="payment-method">
-                    <h3>Payment Method</h3>
-                    <div class="cod-option">
-                        <input type="radio" id="cod" name="Payment Method" value="Cash on Delivery" checked>
-                        <label for="cod">
-                            <i class="fas fa-money-bill-wave"></i> Cash on Delivery (COD)
-                        </label>
-                        <p class="cod-info">Pay when you receive your order</p>
-                    </div>
-                </div>
-                <button type="submit" class="submit-btn">Place Order</button>
-            </form>
+      <!-- Delivery Form -->
+      <form id="checkout-form" class="form-container">
+        <h2>Delivery Details</h2>
+
+        <div class="form-group">
+          <label for="full-name">Full Name *</label>
+          <input type="text" id="full-name" name="Full Name" required>
         </div>
-    </div>
-</main>
 
-<footer>
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="Phone" pattern="[6-9][0-9]{9}" required>
+          <small>Enter 10 digits without +91 or leading 0</small>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email">
+        </div>
+
+        <div class="form-group">
+          <label for="address">Delivery Address *</label>
+          <textarea id="address" name="Address" rows="3" required></textarea>
+          <small>Include street, area, city</small>
+        </div>
+
+        <div class="form-group">
+          <label for="pincode">PIN Code *</label>
+          <input type="text" id="pincode" name="PIN Code" pattern="\d{6}" required>
+          <div id="pincode-info">Enter 6-digit PIN code</div>
+        </div>
+
+        <div class="payment-method">
+          <h3>Payment Method</h3>
+          <div class="cod-option">
+            <input type="radio" id="cod" name="Payment Method" value="Cash on Delivery" checked>
+            <label for="cod"><i class="fas fa-money-bill-wave"></i> Cash on Delivery (COD)</label>
+          </div>
+          <p class="cod-info">Pay when you receive your order</p>
+        </div>
+
+        <button type="submit" class="submit-btn">Place Order</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
     <div class="footer-content">
-        <div class="footer-section">
-            <h4>About Pracandy</h4>
-            <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contact Us</h4>
-            <p>Email: support@pracandy.com</p>
-            <p>Phone: +91 1234567890</p>
-        </div>
-        <div class="footer-section">
-            <h4>Payment Methods</h4>
-            <p>Cash on Delivery (COD) Available</p>
-        </div>
+      <div class="footer-section">
+        <h4>About Pracandy</h4>
+        <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p>Email: info.pracandystore@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h4>Payment Methods</h4>
+        <p>Cash on Delivery (COD) Available</p>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Pracandy. All rights reserved.</p>
-    </div>
-</footer>
+    <div class="footer-bottom"><p>&copy; 2024 Pracandy. All rights reserved.</p></div>
+  </footer>
 
-<script src="js/cart.js"></script>
-<script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>emailjs.init("6QeEY3GqrPTRvh_0-");</script>
+  <script src="js/cart.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const checkoutItems = document.getElementById('checkout-items');
-        const checkoutTotal = document.getElementById('checkout-total');
-        const checkoutForm = document.getElementById('checkout-form');
-    
-        function displayOrderSummary() {
-            checkoutItems.innerHTML = '';
-    
-            if (cart.items.length === 0) {
-                window.location.href = 'cart.html';
-                return;
-            }
-    
-            cart.items.forEach(item => {
-                const orderItem = document.createElement('div');
-                orderItem.className = 'order-item';
-                orderItem.innerHTML = `
-                    <div class="order-item-details">
-                        <h4>${item.name}</h4>
-                        <p>Quantity: ${item.quantity}</p>
-                        <p>₹${item.price * item.quantity}</p>
-                    </div>
-                `;
-                checkoutItems.appendChild(orderItem);
-            });
-    
-            checkoutTotal.textContent = cart.getTotal();
-        }
-    
-        displayOrderSummary();
-    
-        checkoutForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-    
-            const fullName = document.getElementById('full-name').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value;
-            const address = document.getElementById('address').value;
-            const paymentMethod = document.querySelector('input[name="Payment Method"]:checked').value;
-    
-            const phoneRegex = /^[6-9]\d{9}$/;
-            if (!phoneRegex.test(phone)) {
-                alert('Please enter a valid 10-digit Indian mobile number');
-                return;
-            }
-    
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email && !emailRegex.test(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-    
-            if (!fullName || !address) {
-                alert('Please fill in all required fields');
-                return;
-            }
-    
-            const orderId = 'ORD-' + Date.now();
-            const total = cart.getTotal();
-    
-            const orderDetails = cart.items.map(item => ({
-                name: item.name,
-                units: item.quantity,
-                price: item.price * item.quantity,
-                image_url: item.image_url // Ensure this field is set in cart.js
-            }));
-    
-            const params = {
-                order_id: orderId,
-                full_name: fullName,
-                phone: phone,
-                email: email,
-                address: address,
-                payment_method: paymentMethod,
-                total: total,
-                orders: orderDetails
-            };
-    
-            emailjs.send("service_osgf1uq", "template_9u39r3c", params)
-                .then(function(response) {
-                    alert("Order placed successfully! Redirecting...");
-                    setTimeout(() => {
-                        window.location.href = `confirmation.html?orderId=${orderId}&orderDetails=${encodeURIComponent(JSON.stringify(orderDetails))}&total=${total}&paymentMethod=${encodeURIComponent(paymentMethod)}`;
-                        cart.clearCart(); // ✅ Clear cart only after setting the redirect
-                    }, 2000);
-                }, function(error) {
-                    console.error('FAILED...', error);
-                    alert('Error sending email. Please try again.');
-                });
+      const itemsEl     = document.getElementById('checkout-items');
+      const totalEl     = document.getElementById('checkout-total');
+      const form        = document.getElementById('checkout-form');
+      const pincodeIn   = document.getElementById('pincode');
+      const pincodeInfo = document.getElementById('pincode-info');
+
+      function displayOrderSummary() {
+        itemsEl.innerHTML = '';
+        if (!cart.items.length) return window.location = 'cart.html';
+
+        cart.items.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'order-item';
+          row.innerHTML = `
+            <div class="order-item-details">
+              <span class="name">${item.name}</span>
+              <span class="qty">Qty: ${item.quantity}</span>
+            </div>
+            <span class="price">₹${item.price * item.quantity}</span>
+          `;
+          itemsEl.append(row);
         });
+        totalEl.textContent = cart.getTotal();
+      }
+      displayOrderSummary();
+
+      // PIN Code verification
+      pincodeIn.addEventListener('blur', () => {
+        const pin = pincodeIn.value.trim();
+        if (!/^\d{6}$/.test(pin)) {
+          pincodeInfo.textContent = 'PIN must be 6 digits';
+          pincodeInfo.classList.add('error');
+          return;
+        }
+        fetch(`https://api.postalpincode.in/pincode/${pin}`)
+          .then(res => res.json())
+          .then(data => {
+            if (data[0].Status === 'Success') {
+              const postOffice = data[0].PostOffice[0];
+              pincodeInfo.textContent = `${postOffice.District}, ${postOffice.State}`;
+              pincodeInfo.classList.remove('error');
+            } else {
+              pincodeInfo.textContent = 'Invalid PIN Code';
+              pincodeInfo.classList.add('error');
+            }
+          })
+          .catch(() => {
+            pincodeInfo.textContent = 'Unable to verify PIN right now';
+            pincodeInfo.classList.add('error');
+          });
+      });
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const fullName = form['Full Name'].value.trim();
+        const phone    = form['Phone'].value.trim();
+        const email    = form['Email'].value.trim();
+        const address  = form['Address'].value.trim();
+        const pincode  = form['PIN Code'].value.trim();
+        const payment  = form['Payment Method'].value;
+
+        if (!/^[6-9]\d{9}$/.test(phone)) return alert('Enter valid 10-digit mobile number');
+        if (!/^\d{6}$/.test(pincode))  return alert('Enter valid 6-digit PIN code');
+        if (!fullName || !address)     return alert('Fill in all required fields');
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return alert('Enter valid email');
+
+        const orderId = 'ORD-' + Date.now();
+        const total   = cart.getTotal();
+        const orders  = cart.items.map(i => ({
+          name: i.name, units: i.quantity, price: i.price * i.quantity, image_url: i.image_url
+        }));
+        const params = { order_id: orderId, full_name: fullName, phone, email, address, pincode, payment_method: payment, total, orders };
+
+        emailjs.send("service_osgf1uq","template_9u39r3c",params)
+          .then(() => {
+            alert("Order placed! Redirecting...");
+            setTimeout(() => {
+              location = `confirmation.html?orderId=${orderId}&total=${total}&paymentMethod=${encodeURIComponent(payment)}&details=${encodeURIComponent(JSON.stringify(orders))}`;
+            }, 1000);
+          })
+          .catch(err => {
+            console.error(err);
+            alert("Error placing order. Please try again.");
+          });
+      });
     });
-    </script>    
+  </script>
 </body>
 </html>

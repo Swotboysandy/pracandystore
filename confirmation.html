@@ -1,226 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Confirmation - Pracandy</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .confirmation-container {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 700px;
-            margin: 40px auto;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Confirmation - Pracandy</title>
 
-        .confirmation-container h2 {
-            color: #27ae60;
-            margin: 20px 0;
-        }
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-        .order-details, .delivery-info {
-            text-align: left;
-            margin-top: 30px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .order-details h3, .delivery-info h3 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .order-item {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-        }
-
-        .order-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            margin-right: 20px;
-            border-radius: 6px;
-        }
-
-        .order-item-details h4 {
-            margin: 0 0 8px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .order-item-details p {
-            margin: 4px 0;
-            color: #555;
-        }
-
-        .order-total, .order-id-display {
-            font-size: 16px;
-            margin-top: 15px;
-            text-align: right;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 12px 24px;
-            background-color: #27ae60;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 30px;
-            transition: background 0.3s;
-        }
-
-        .btn-primary:hover {
-            background-color: #1f8c4d;
-        }
-
-        @media (max-width: 600px) {
-            .order-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .order-item img {
-                margin-bottom: 10px;
-            }
-
-            .order-total, .order-id-display {
-                text-align: left;
-            }
-        }
-    </style>
+  <style>
+    body {
+      background-color: #ffffff;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+    .confirmation-container {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+      margin: 40px auto;
+    }
+    .confirmation-container h2 {
+      color: #27ae60;
+      margin: 20px 0;
+      font-size: 1.75rem;
+    }
+    .order-details,
+    .delivery-info {
+      text-align: left;
+      margin-top: 30px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .order-details h3,
+    .delivery-info h3 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+    .order-item {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    .order-item:last-child {
+      border-bottom: none;
+    }
+    .order-item img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 6px;
+    }
+    .order-item-details h4 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #333;
+    }
+    .order-item-details p {
+      margin: 4px 0;
+      color: #555;
+    }
+    .order-total,
+    .order-id-display {
+      font-size: 16px;
+      margin-top: 15px;
+      text-align: right;
+      font-weight: bold;
+      color: #333;
+    }
+    .btn-primary {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #27ae60;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 30px;
+      transition: background 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #1f8c4d;
+    }
+    @media (max-width: 600px) {
+      .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .order-item img {
+        margin-bottom: 10px;
+      }
+      .order-total,
+      .order-id-display {
+        text-align: left;
+      }
+    }
+    /* Simple navbar and footer resets */
+    .navbar, footer { width: 100%; }
+    .navbar .logo h1, .nav-links a { display: inline-block; margin: 0 10px; color: inherit; text-decoration: none; }
+    footer { text-align: center; padding: 20px 0; color: #64748b; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none; color: inherit;">
-                    <h1>Pracandy</h1>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="reviews.html">Reviews</a>
-                <a href="faq.html">FAQs</a>
-                <a href="cart.html" class="cart-link">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-        </nav>
-    </header>
+  <header>
+    <nav class="navbar" style="padding: 10px 20px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+      <div class="logo"><a href="index.html"><h1>Pracandy</h1></a></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+      </div>
+    </nav>
+  </header>
 
-            <div class="order-details">
-                <h3>Order Summary</h3>
-                <div id="confirmation-items"></div>
-                <div class="order-total">
-                    Total Amount: ₹<span id="confirmation-total">0</span>
-                </div>
-                <div class="order-id-display">
-                    Order ID: <strong id="confirmation-order-id"></strong>
-                </div>
-            </div>
+  <main>
+    <div class="confirmation-container">
+      <i class="fas fa-check-circle fa-3x" style="color:#27ae60;"></i>
+      <h2>Your order is confirmed!</h2>
 
-            <div class="delivery-info">
-                <h3>Delivery Information</h3>
-                <p>Your order will be delivered within 3-5 business days to the provided address.</p>
-                <p>Payment Method: <strong id="confirmation-payment-method">Cash on Delivery (COD)</strong></p>
-            </div>
-
-            <div class="text-center mt-2">
-                <a href="index.html" class="btn btn-primary">Continue Shopping</a>
-            </div>
+      <div class="order-details">
+        <h3>Order Summary</h3>
+        <div id="confirmation-items"></div>
+        <div class="order-total">
+          Total Amount: ₹<span id="confirmation-total">0</span>
         </div>
+        <div class="order-id-display">
+          Order ID: <strong id="confirmation-order-id"></strong>
+        </div>
+      </div>
+
+      <div class="delivery-info">
+        <h3>Delivery Information</h3>
+        <p>Your order will be delivered within 3–5 business days to the provided address.</p>
+        <p>Payment Method: <strong id="confirmation-payment-method">Cash on Delivery (COD)</strong></p>
+      </div>
+
+      <a href="index.html" class="btn-primary">Continue Shopping</a>
     </div>
-</main>
+  </main>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>About Pracandy</h4>
-            <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
-        </div>
-        <div class="footer-section">
-            <h4>Contact Us</h4>
-            <p>Email: support@pracandy.com</p>
-            <p>Phone: +91 1234567890</p>
-        </div>
-        <div class="footer-section">
-            <h4>Payment Methods</h4>
-            <p>Cash on Delivery (COD) Available</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Pracandy. All rights reserved.</p>
-    </div>
-</footer>
-<script src="js/cart.js"></script>
-<script>
+  <footer>
+    &copy; 2024 Pracandy. All rights reserved.
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const confirmationItems = document.getElementById('confirmation-items');
-        const confirmationTotal = document.getElementById('confirmation-total');
-        const confirmationOrderId = document.getElementById('confirmation-order-id');
-        const confirmationPaymentMethod = document.getElementById('confirmation-payment-method');
-    
-        function displayOrderSummary() {
-            confirmationItems.innerHTML = '';
-    
-            const urlParams = new URLSearchParams(window.location.search);
-            const orderId = urlParams.get('orderId');
-            const orderDetails = urlParams.get('orderDetails');
-            const total = urlParams.get('total');
-            const paymentMethod = urlParams.get('paymentMethod') || 'Cash on Delivery (COD)';
-    
-            if (!orderId || !orderDetails || !total) {
-                window.location.href = 'index.html';
-                return;
-            }
-    
-            confirmationOrderId.textContent = orderId;
-            confirmationTotal.textContent = total;
-            confirmationPaymentMethod.textContent = paymentMethod;
-    
-            try {
-                const items = JSON.parse(decodeURIComponent(orderDetails));
-                items.forEach(item => {
-                    const orderItem = document.createElement('div');
-                    orderItem.className = 'order-item';
-                    orderItem.innerHTML = `
-                        <img src="${item.image_url}" alt="${item.name}" style="width:80px;height:80px;object-fit:cover;margin-right:20px;border-radius:6px;">
-                        <div class="order-item-details">
-                            <h4>${item.name}</h4>
-                            <p>Quantity: ${item.units}</p>
-                            <p>₹${item.price}</p>
-                        </div>
-                    `;
-                    confirmationItems.appendChild(orderItem);
-                });
-    
-                // ✅ Clear cart after displaying items
-                if (typeof cart !== 'undefined') {
-                    cart.clearCart();
-                }
-    
-            } catch (error) {
-                console.error('Error parsing order details:', error);
-                confirmationItems.innerHTML = '<p>Error loading order details</p>';
-            }
-        }
-    
-        displayOrderSummary();
+      const itemsEl     = document.getElementById('confirmation-items');
+      const totalEl     = document.getElementById('confirmation-total');
+      const orderIdEl   = document.getElementById('confirmation-order-id');
+      const paymentEl   = document.getElementById('confirmation-payment-method');
+
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('orderId');
+      const details = params.get('details');
+      const total   = params.get('total');
+      const payment = params.get('paymentMethod') || 'Cash on Delivery (COD)';
+
+      if (!orderId || !details || !total) {
+        // Missing data—redirect home
+        return window.location.href = 'index.html';
+      }
+
+      orderIdEl.textContent = orderId;
+      totalEl.textContent   = total;
+      paymentEl.textContent = decodeURIComponent(payment);
+
+      let items = [];
+      try {
+        items = JSON.parse(decodeURIComponent(details));
+      } catch (e) {
+        console.error('Invalid order details:', e);
+      }
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'order-item';
+        div.innerHTML = `
+          <img src="${item.image_url}" alt="${item.name}">
+          <div class="order-item-details">
+            <h4>${item.name}</h4>
+            <p>Quantity: ${item.units}</p>
+            <p>₹${item.price}</p>
+          </div>
+        `;
+        itemsEl.appendChild(div);
+      });
+
+      // Now clear the cart so it's empty for next time
+      if (typeof cart !== 'undefined') {
+        cart.clearCart();
+      }
     });
-    </script>
+  </script>
 </body>
 </html>

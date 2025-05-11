@@ -16,7 +16,7 @@
     --radius: 0.5rem;
     --transition: all 0.3s ease;
     --font-heading: 'Poppins', 'Inter', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-body: 'Poppins', 'Inter', system-ui, sans-serif;
 }
 
 * {
@@ -40,7 +40,7 @@ body {
     box-shadow: var(--shadow);
     padding: 1rem 5%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     position: sticky;
     top: 0;
