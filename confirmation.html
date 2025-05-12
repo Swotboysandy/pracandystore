@@ -2,19 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Order Confirmation - Pracandy</title>
 
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 1) FontAwesome before any overrides -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
 
+  <!-- 2) Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- 3) Page & navbar overrides -->
   <style>
+    :root {
+      --main-blue: #007bff;
+    }
     body {
       background-color: #ffffff;
       margin: 0;
       font-family: 'Poppins', sans-serif;
+      padding-bottom: 60px; /* for bottom-nav */
     }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .logo a { text-decoration: none; color: inherit; }
+    .nav-links {
+      display: flex; gap: 1rem; align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .cart-link {
+      position: relative;
+      font-size: 1.25rem;
+    }
+    .cart-link i { color: var(--main-blue); }
+    .cart-count {
+      position: absolute; top: -6px; right: -10px;
+      background: #e74c3c; color: #fff;
+      border-radius: 50%; padding: 2px 6px;
+      font-size: .75rem;
+    }
+
+    /* Bottom-nav for mobile */
+    .bottom-nav { display: none; }
+    @media (max-width: 768px) {
+      .nav-links a:not(.cart-link) { display: none; }
+      .bottom-nav {
+        display: flex;
+        position: fixed; bottom: 0; left: 0; right: 0;
+        background: #fff;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        justify-content: space-around; padding: .5rem 0;
+        z-index: 100;
+      }
+      .bottom-nav a {
+        flex: 1; text-align: center;
+        color: #333; text-decoration: none;
+        font-size: .9rem;
+      }
+      .bottom-nav a i {
+        display: block; font-size: 1.5rem;
+        margin-bottom: .25rem;
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+        font-style: normal !important;
+        color: var(--main-blue) !important;
+      }
+    }
+
+    /* Confirmation styles */
     .confirmation-container {
       text-align: center;
       padding: 40px 20px;
@@ -29,8 +98,7 @@
       margin: 20px 0;
       font-size: 1.75rem;
     }
-    .order-details,
-    .delivery-info {
+    .order-details, .delivery-info {
       text-align: left;
       margin-top: 30px;
       background: #fff;
@@ -38,40 +106,32 @@
       border-radius: 6px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
-    .order-details h3,
-    .delivery-info h3 {
+    .order-details h3, .delivery-info h3 {
       border-bottom: 2px solid #eee;
       padding-bottom: 10px;
       margin-bottom: 20px;
       font-size: 1.25rem;
     }
     .order-item {
-      display: flex;
-      align-items: center;
+      display: flex; align-items: center;
       border-bottom: 1px solid #eee;
       padding: 15px 0;
     }
-    .order-item:last-child {
-      border-bottom: none;
-    }
+    .order-item:last-child { border-bottom: none; }
     .order-item img {
-      width: 80px;
-      height: 80px;
+      width: 80px; height: 80px;
       object-fit: cover;
       margin-right: 20px;
       border-radius: 6px;
     }
     .order-item-details h4 {
       margin: 0 0 8px;
-      font-size: 16px;
-      color: #333;
+      font-size: 16px; color: #333;
     }
     .order-item-details p {
-      margin: 4px 0;
-      color: #555;
+      margin: 4px 0; color: #555;
     }
-    .order-total,
-    .order-id-display {
+    .order-total, .order-id-display {
       font-size: 16px;
       margin-top: 15px;
       text-align: right;
@@ -88,41 +148,34 @@
       margin-top: 30px;
       transition: background 0.3s;
     }
-    .btn-primary:hover {
-      background-color: #1f8c4d;
-    }
+    .btn-primary:hover { background-color: #1f8c4d; }
+
     @media (max-width: 600px) {
-      .order-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .order-item img {
-        margin-bottom: 10px;
-      }
-      .order-total,
-      .order-id-display {
-        text-align: left;
-      }
+      .order-item { flex-direction: column; align-items: flex-start; }
+      .order-item img { margin-bottom: 10px; }
+      .order-total, .order-id-display { text-align: left; }
     }
-    /* Simple navbar and footer resets */
-    .navbar, footer { width: 100%; }
-    .navbar .logo h1, .nav-links a { display: inline-block; margin: 0 10px; color: inherit; text-decoration: none; }
-    footer { text-align: center; padding: 20px 0; color: #64748b; font-size: 0.9rem; }
   </style>
 </head>
+
 <body>
+  <!-- Header -->
   <header>
-    <nav class="navbar" style="padding: 10px 20px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+    <nav class="navbar">
       <div class="logo"><a href="index.html"><h1>Pracandy</h1></a></div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="reviews.html">Reviews</a>
         <a href="faq.html">FAQs</a>
-        <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </a>
       </div>
     </nav>
   </header>
 
+  <!-- Confirmation Content -->
   <main>
     <div class="confirmation-container">
       <i class="fas fa-check-circle fa-3x" style="color:#27ae60;"></i>
@@ -149,26 +202,34 @@
     </div>
   </main>
 
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
+    <a href="faq.html"><i class="fas fa-info-circle"></i>FAQs</a>
+  </nav>
+
+  <!-- Footer -->
   <footer>
     &copy; 2024 Pracandy. All rights reserved.
   </footer>
 
+  <!-- Scripts -->
   <script src="js/cart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const itemsEl     = document.getElementById('confirmation-items');
-      const totalEl     = document.getElementById('confirmation-total');
-      const orderIdEl   = document.getElementById('confirmation-order-id');
-      const paymentEl   = document.getElementById('confirmation-payment-method');
+      const itemsEl   = document.getElementById('confirmation-items');
+      const totalEl   = document.getElementById('confirmation-total');
+      const orderIdEl = document.getElementById('confirmation-order-id');
+      const paymentEl = document.getElementById('confirmation-payment-method');
 
-      const params = new URLSearchParams(window.location.search);
-      const orderId = params.get('orderId');
-      const details = params.get('details');
-      const total   = params.get('total');
-      const payment = params.get('paymentMethod') || 'Cash on Delivery (COD)';
+      const params   = new URLSearchParams(window.location.search);
+      const orderId  = params.get('orderId');
+      const details  = params.get('details');
+      const total    = params.get('total');
+      const payment  = params.get('paymentMethod') || 'Cash on Delivery (COD)';
 
       if (!orderId || !details || !total) {
-        // Missing data—redirect home
         return window.location.href = 'index.html';
       }
 
@@ -197,7 +258,6 @@
         itemsEl.appendChild(div);
       });
 
-      // Now clear the cart so it's empty for next time
       if (typeof cart !== 'undefined') {
         cart.clearCart();
       }

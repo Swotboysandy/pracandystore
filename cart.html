@@ -8,34 +8,223 @@
   <!-- Your main stylesheet -->
   <link rel="stylesheet" href="css/style.css"/>
 
-  <!-- Cart-specific overrides -->
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+
+  <!-- Cart-specific & navbar overrides -->
   <style>
-    /* Make the page background white */
+     :root {
+      --main-blue: #007bff; /* <-- your brand blue */
+    }
+
+    /* ----- Reset Logo Underline ----- */
+    .logo a {
+      text-decoration: none;
+    }
+
+    /* ----- Navbar ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .cart-link {
+      position: relative;
+      font-size: 1.25rem;
+    }
+    /* apply blue to the icon */
+    .cart-link i {
+      color: var(--main-blue);
+    }
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: .75rem;
+    }
+
+    /* ----- Hero Section ----- */
+    .hero {
+      position: relative;
+      background: url('img/hero-bg.jpg') center/cover no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+    }
+
+    
+    /* ----- Bottom Nav for Mobile ----- */
+    .bottom-nav {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .nav-links a:not(.cart-link) {
+        display: none;
+      }
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background: #fff;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        justify-content: space-around;
+        padding: .5rem 0;
+        z-index: 100;
+      }
+      .bottom-nav a {
+        flex: 1;
+        text-align: center;
+        color: #333;
+        text-decoration: none;
+        font-size: .9rem;
+      }
+      .bottom-nav a i {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: .25rem;
+        color: var(--main-blue);
+      }
+      body {
+        padding-bottom: 60px;
+      }
+    }
+    :root {
+      --main-blue: #007bff; /* <-- your brand blue */
+    }
+
+    /* ----- Reset Logo Underline ----- */
+    .logo a {
+      text-decoration: none;
+    }
+
+    /* ----- Navbar ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .cart-link {
+      position: relative;
+      font-size: 1.25rem;
+    }
+    .cart-link i {
+      color: var(--main-blue);
+    }
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: #e74c3c;
+      color: #fff;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: .75rem;
+    }
+
+    /* ----- Bottom Nav for Mobile ----- */
+    .bottom-nav {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .nav-links a:not(.cart-link) {
+        display: none;
+      }
+      .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        background: #fff;
+        box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        justify-content: space-around;
+        padding: .5rem 0;
+        z-index: 100;
+      }
+      .bottom-nav a {
+        flex: 1;
+        text-align: center;
+        color: #333;
+        text-decoration: none;
+        font-size: .9rem;
+      }
+      .bottom-nav a i {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: .25rem;
+        color: var(--main-blue);
+      }
+      body {
+        padding-bottom: 60px;
+      }
+    }
+
+    /* ----- Cart page styles ----- */
     body {
       background-color: #ffffff;
     }
-
-    /* Wrapper now just handles width & padding */
     .cart-boxed {
       width: 90%;
       max-width: 900px;
       margin: 2rem auto;
-      padding: 0; /* no background padding here */
+      padding: 0;
     }
-
     .cart-boxed h1 {
       margin-bottom: 1rem;
+      text-align: center;
     }
-
-    /* Cart items list */
     .cart-items {
       display: flex;
       flex-direction: column;
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-
-    /* Each item has its own background, border & slight shadow */
     .cart-item {
       display: grid;
       grid-template-columns: 80px 1fr auto;
@@ -47,7 +236,6 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       align-items: center;
     }
-
     .cart-item img {
       width: 80px;
       height: 80px;
@@ -56,23 +244,19 @@
       background: #fff;
       padding: 0.5rem;
     }
-
     .cart-item-details h3 {
       margin: 0 0 0.25rem;
       font-weight: 500;
     }
-
     .cart-item-details p {
       margin: 0 0 0.5rem;
       font-weight: 500;
     }
-
     .quantity-controls {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
     }
-
     .quantity-btn {
       width: 28px; height: 28px;
       border: 2px solid #cbd5e1;
@@ -85,7 +269,6 @@
       border-color: #2563eb;
       color: #2563eb;
     }
-
     .remove-btn {
       background: none;
       border: none;
@@ -97,14 +280,12 @@
     .remove-btn:hover {
       transform: scale(1.1);
     }
-
     .cart-total {
       text-align: right;
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
     }
-
     @media (max-width: 600px) {
       .cart-item {
         grid-template-columns: 60px 1fr auto;
@@ -118,44 +299,43 @@
 </head>
 
 <body>
+
+  <!-- Header -->
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="index.html" style="text-decoration:none; color:inherit;">
-          <h1>Pracandy</h1>
-        </a>
+        <a href="index.html"><h1>Pracandy</h1></a>
       </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="reviews.html">Reviews</a>
         <a href="faq.html">FAQs</a>
         <a href="cart.html" class="cart-link">
-          <i class="fas fa-shopping-cart"></i>
+          <i class="fas fa-shopping-bag"></i>
           <span class="cart-count">0</span>
         </a>
       </div>
     </nav>
   </header>
 
+  <!-- Cart Content -->
   <main>
-    <div class="container cart-boxed">
-      <h1 class="text-center mt-2">Shopping Cart</h1>
-      
+    <div class="cart-boxed">
+      <h1>Shopping Cart</h1>
       <div class="cart-items">
         <!-- JS will inject each .cart-item here -->
       </div>
-      
       <div class="cart-total">
         Total: ₹<span id="cart-total-amount">0</span>
       </div>
-      
-      <div class="text-center mt-2">
+      <div style="text-align: center; margin-top: 1rem;">
         <a href="index.html" class="btn">Continue Shopping</a>
         <a href="checkout.html" class="btn btn-primary">Proceed to Checkout</a>
       </div>
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -176,23 +356,30 @@
     </div>
   </footer>
 
-  <!-- FontAwesome & Cart JS -->
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
+    <a href="faq.html"><i class="fas fa-info-circle"></i>FAQs</a>
+  </nav>
+
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
   <script src="js/cart.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const cartItemsContainer = document.querySelector('.cart-items');
       const cartTotalAmount = document.getElementById('cart-total-amount');
-      
+
       function displayCartItems() {
         cartItemsContainer.innerHTML = '';
-        
-        if (cart.items.length === 0) {
+
+        if (!cart.items || cart.items.length === 0) {
           cartItemsContainer.innerHTML = '<p class="text-center">Your cart is empty</p>';
           cartTotalAmount.textContent = '0';
           return;
         }
-        
+
         cart.items.forEach(item => {
           const cartItem = document.createElement('div');
           cartItem.className = 'cart-item';
@@ -213,23 +400,24 @@
           `;
           cartItemsContainer.appendChild(cartItem);
         });
-        
+
         cartTotalAmount.textContent = cart.getTotal();
       }
-      
+
       window.updateQuantity = (productId, quantity) => {
         cart.updateQuantity(productId, quantity);
         displayCartItems();
       };
-      
+
       window.removeItem = (productId) => {
         cart.removeItem(productId);
         displayCartItems();
       };
-      
+
       // Initial render
       displayCartItems();
     });
   </script>
+
 </body>
 </html>
