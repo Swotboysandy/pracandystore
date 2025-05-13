@@ -77,10 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const productCard = e.target.closest('.product-card');
+            const priceEl = productCard.querySelector('.price');
+            
+            // Get the final discounted price (skip .regular-price)
+            const finalPrice = [...priceEl.childNodes]
+                .filter(n => n.nodeType === 3 && n.textContent.trim()) // only text nodes with actual content
+                .pop().textContent.trim().replace('₹', '');
+
             const product = {
                 id: productCard.dataset.id,
-                name: productCard.querySelector('h3').textContent,
-                price: parseInt(productCard.querySelector('.price').textContent.replace('₹', '').trim()),
+                name: productCard.querySelector('h3').textContent.trim(),
+                price: parseInt(finalPrice),
                 image_url: productCard.querySelector('img').getAttribute('data-src') || productCard.querySelector('img').src
             };
 
@@ -102,14 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
 
             document.body.appendChild(successMessage);
-
-            setTimeout(() => {
-                successMessage.remove();
-            }, 2000);
+            setTimeout(() => successMessage.remove(), 2000);
         });
     });
 
-    // If cart page logic exists, handle rendering and interaction
+    // Render Cart Items on Cart Page
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartTotalAmount = document.getElementById('cart-total-amount');
 
@@ -157,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
             displayCartItems();
         };
 
-        // Initial render
         displayCartItems();
     }
 });
