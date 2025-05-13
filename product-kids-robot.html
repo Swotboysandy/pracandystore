@@ -8,27 +8,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/faq.css">
-
+  <style>
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .price .regular-price {
+      font-size: 0.95rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-right: 8px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav class="navbar">
-          <div class="logo">
-            <a href="index.html"><h1>Pracandy</h1></a>
-          </div>
-          <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="faq.html">FAQs</a>
-            <a href="cart.html" class="cart-link">
-              <i class="fas fa-shopping-bag"></i>
-              <span class="cart-count">0</span>
-            </a>
-          </div>
-        </nav>
-      </header>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><h1>Pracandy</h1></a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
 
   <!-- Product Content -->
   <main>
@@ -47,7 +60,9 @@
       <div class="product-info">
         <h2>Kids Robot Space Projector</h2>
         <p>Fun and futuristic projector lamp with spinning galaxy lights. Comes with a remote for easy control and multiple light modes for a magical experience!</p>
-        <div class="price">₹699</div>
+        <div class="price">
+          <span class="regular-price">₹1599</span> ₹699
+        </div>
         <button class="add-to-cart">Add to Cart</button>
 
         <div class="tabs">
@@ -67,7 +82,6 @@
               <li>Remote included</li>
             </ul>
           </div>
-          
         </div>
       </div>
     </div>
@@ -102,7 +116,7 @@
   </nav>
 
   <!-- Scripts --> 
- <script src="js/product.js"></script>
+  <script src="js/product.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/main.js"></script>
 </body>

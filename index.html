@@ -7,7 +7,18 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
-    
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .price .regular-price {
+      font-size: 0.95rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-right: 8px;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -31,39 +42,31 @@
   </header>
 
   <!-- Hero Section -->
- <!-- Hero Section -->
-<main>
-  <div class="hero-content">
-    <h2>Best Deals on Trending Gadgets</h2>
-    <p>Shop now and get amazing deals Cash on Delivery!</p>
-  </div>
-  <div class="gradient-bg">
-    
-    <svg xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="goo">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
-          <feBlend in="SourceGraphic" in2="goo" />
-        </filter>
-      </defs>
-    </svg>
-    <div class="gradients-container">
-      
-      <div class="g1"></div>
-      <div class="g2"></div>
-      <div class="g3"></div>
-      <div class="g4"></div>
-      <div class="g5"></div>
-      <div class="interactive"></div>
-      
+  <main>
+    <div class="hero-content">
+      <h2>Best Deals on Trending Gadgets</h2>
+      <p>Shop now and get amazing deals Cash on Delivery!</p>
+    </div>
+    <div class="gradient-bg">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </defs>
+      </svg>
+      <div class="gradients-container">
+        <div class="g1"></div>
+        <div class="g2"></div>
+        <div class="g3"></div>
+        <div class="g4"></div>
+        <div class="g5"></div>
+        <div class="interactive"></div>
+      </div>
+    </div>
 
-    <!-- Hero Text -->
-   
-  </section>
-
-</div>
-</div>
     <!-- Product Grid -->
     <section class="products">
       <div class="product-grid">
@@ -83,7 +86,9 @@
               <span>360° Rotation</span>
               <span>Colorful Galaxy Effect for rooms</span>
             </div>
-            <div class="price">₹699</div>
+            <div class="price">
+              <span class="regular-price">₹1599</span> ₹699
+            </div>
           </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>
@@ -103,7 +108,9 @@
               <span>Ambience</span>
               <span>Premium Glass & Wood</span>
             </div>
-            <div class="price">₹269</div>
+            <div class="price">
+              <span class="regular-price">₹899</span> ₹269
+            </div>
           </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>
@@ -123,7 +130,9 @@
               <span>Colorful Galaxy Effect</span>
               <span>USB or Battery Powered</span>
             </div>
-            <div class="price">₹399</div>
+            <div class="price">
+              <span class="regular-price">₹899</span> ₹399
+            </div>
           </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>

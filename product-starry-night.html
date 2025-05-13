@@ -8,6 +8,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/faq.css">
+  <style>
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .price .regular-price {
+      font-size: 0.95rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-right: 8px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
@@ -46,7 +60,9 @@
       <div class="product-info">
         <h2>Starry Night Galaxy Projector</h2>
         <p>Create a mesmerizing galaxy on your ceiling! This projector features 6 light effects and stars, with USB or battery power and smooth rotation — perfect for relaxing nights or gifting.</p>
-        <div class="price">₹399</div>
+        <div class="price">
+          <span class="regular-price">₹899</span> ₹399
+        </div>
         <button class="add-to-cart">Add to Cart</button>
 
         <div class="tabs">
@@ -100,8 +116,41 @@
   </nav>
 
   <!-- Scripts --> 
-  <script src="js/product.js"></script>
+  <script>
+    function changeImage(thumb) {
+      const mainImage = document.getElementById('mainImage');
+      document.querySelectorAll('.thumbs img').forEach(img => img.classList.remove('active'));
+      thumb.classList.add('active');
+      mainImage.src = thumb.src;
+    }
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const addToCartBtn = document.querySelector('.add-to-cart');
+      if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+          const product = {
+            id: 'starry-night',
+            name: 'Starry Night Galaxy Projector',
+            price: 399,
+            image_url: 'img/starry_night_projector.png'
+          };
+          if (window.cart && typeof cart.addItem === 'function') {
+            cart.addItem(product);
+          }
+        });
+      }
+    });
+  </script>
+
   <script src="js/cart.js"></script>
+  <script src="js/product.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

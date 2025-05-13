@@ -10,6 +10,20 @@
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/faq.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+    .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .price .regular-price {
+      font-size: 0.95rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-right: 8px;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
 
@@ -48,7 +62,9 @@
       <div class="product-info">
         <h2>Moon Light Crystal Ball</h2>
         <p>Elegant ambient LED lamp crafted with a realistic moon surface design and premium glass base. Ideal for bedroom décor or a thoughtful gift.</p>
-        <div class="price">₹269</div>
+        <div class="price">
+          <span class="regular-price">₹899</span> ₹269
+        </div>
         <button class="add-to-cart">Add to Cart</button>
 
         <div class="tabs">
@@ -116,26 +132,25 @@
       document.getElementById(tabId).classList.add('active');
       event.target.classList.add('active');
     }
-   
-  document.addEventListener('DOMContentLoaded', () => {
-    const addToCartBtn = document.querySelector('.add-to-cart');
-    if (addToCartBtn) {
-      addToCartBtn.addEventListener('click', () => {
-        const product = {
-          id: 'moon-light', // Change this ID uniquely for each product
-          name: 'Moon Light Crystal Ball',
-          price: 269,
-          image_url: 'img/Moon_light_gift.png'
-        };
-        if (window.cart && typeof cart.addItem === 'function') {
-          cart.addItem(product);
-        }
-      });
-    }
-  });
 
-
+    document.addEventListener('DOMContentLoaded', () => {
+      const addToCartBtn = document.querySelector('.add-to-cart');
+      if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+          const product = {
+            id: 'moon-light',
+            name: 'Moon Light Crystal Ball',
+            price: 269,
+            image_url: 'img/Moon_light_gift.png'
+          };
+          if (window.cart && typeof cart.addItem === 'function') {
+            cart.addItem(product);
+          }
+        });
+      }
+    });
   </script>
+
   <script src="js/cart.js"></script>
   <script src="js/product.js"></script>
   <script src="js/main.js"></script>
