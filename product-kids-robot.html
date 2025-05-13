@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kids Robot Space Projector – Pracandy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/product.css" />
+  <link rel="stylesheet" href="css/faq.css">
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+          <div class="logo">
+            <a href="index.html"><h1>Pracandy</h1></a>
+          </div>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="faq.html">FAQs</a>
+            <a href="cart.html" class="cart-link">
+              <i class="fas fa-shopping-bag"></i>
+              <span class="cart-count">0</span>
+            </a>
+          </div>
+        </nav>
+      </header>
+
+  <!-- Product Content -->
+  <main>
+    <div class="product-wrapper">
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <img id="mainImage" src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector" />
+        <div class="thumbs">
+          <img src="img/kids_robot_space_projector.png" alt="1" class="active" onclick="changeImage(this)">
+          <img src="img/kids_robot_alt1.jpg" alt="2" onclick="changeImage(this)">
+          <img src="img/kids_robot_alt2.jpg" alt="3" onclick="changeImage(this)">
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <h2>Kids Robot Space Projector</h2>
+        <p>Fun and futuristic projector lamp with spinning galaxy lights. Comes with a remote for easy control and multiple light modes for a magical experience!</p>
+        <div class="price">₹699</div>
+        <button class="add-to-cart">Add to Cart</button>
+
+        <div class="tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('desc')">Description</button>
+            <button class="tab-btn" onclick="showTab('specs')">Specifications</button>
+          </div>
+          <div id="desc" class="tab-content active">
+            <p>This kids robot projector creates a relaxing, magical night atmosphere. It’s remote-controlled, USB-powered, and rotates 360° for dynamic light shows. Perfect for kids’ rooms or as a birthday gift!</p>
+          </div>
+          <div id="specs" class="tab-content">
+            <ul>
+              <li>Power: USB / Battery</li>
+              <li>Rotation: 360° motorized</li>
+              <li>Modes: Multi-color light + starlight</li>
+              <li>Material: Durable ABS plastic</li>
+              <li>Remote included</li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Pracandy</h4>
+        <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:info.pracandystore@gmail.com">info.pracandystore@gmail.com</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Payment Methods</h4>
+        <p>Cash on Delivery (COD) Available</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Pracandy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
+    <a href="faq.html"><i class="fas fa-info-circle"></i>FAQs</a>
+  </nav>
+
+  <!-- Scripts --> 
+ <script src="js/product.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

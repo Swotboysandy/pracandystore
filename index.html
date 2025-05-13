@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pracandy - Best Deals on Trending Gadgets</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <style>
     :root {
-      --main-blue: #007bff; /* <-- your brand blue */
+      --main-blue: #007bff;
     }
 
-    /* ----- Reset Logo Underline ----- */
     .logo a {
       text-decoration: none;
     }
 
-    /* ----- Navbar ----- */
     .navbar {
       display: flex;
       justify-content: space-around;
@@ -25,24 +23,28 @@
       background: #fff;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
+
     .nav-links {
       display: flex;
       gap: 1rem;
       align-items: center;
     }
+
     .nav-links a {
       text-decoration: none;
       color: #333;
       font-weight: 500;
     }
+
     .cart-link {
       position: relative;
       font-size: 1.25rem;
     }
-    /* apply blue to the icon */
+
     .cart-link i {
       color: var(--main-blue);
     }
+
     .cart-count {
       position: absolute;
       top: -6px;
@@ -54,7 +56,6 @@
       font-size: .75rem;
     }
 
-    /* ----- Hero Section ----- */
     .hero {
       position: relative;
       background: url('img/hero-bg.jpg') center/cover no-repeat;
@@ -62,34 +63,111 @@
       text-align: center;
       padding: 6rem 2rem;
     }
+
     .hero::before {
       content: "";
       position: absolute;
       top:0; left:0; right:0; bottom:0;
       background: rgba(0,0,0,0.4);
     }
+
     .hero > * {
       position: relative;
       z-index: 1;
     }
+
     .hero h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+
     .hero p {
       font-size: 1.25rem;
       opacity: 0.9;
     }
 
-    
-    /* ----- Bottom Nav for Mobile ----- */
+    .products {
+      padding: 2rem 1rem;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-link {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .product-card h3 {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+    }
+
+    .rating {
+      color: #f1c40f;
+    }
+
+    .features span {
+      display: inline-block;
+      background: #f1f1f1;
+      padding: 2px 8px;
+      margin: 4px 4px 0 0;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+
+    .add-to-cart {
+      background: var(--main-blue);
+      color: white;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .add-to-cart:hover {
+      background: #0056c1;
+    }
+
     .bottom-nav {
       display: none;
     }
+
     @media (max-width: 768px) {
       .nav-links a:not(.cart-link) {
         display: none;
       }
+
       .bottom-nav {
         display: flex;
         position: fixed;
@@ -100,6 +178,7 @@
         padding: .5rem 0;
         z-index: 100;
       }
+
       .bottom-nav a {
         flex: 1;
         text-align: center;
@@ -107,16 +186,38 @@
         text-decoration: none;
         font-size: .9rem;
       }
-      .bottom-nav a i {
+
+      .bottom-nav a i {   
         display: block;
         font-size: 1.5rem;
         margin-bottom: .25rem;
         color: var(--main-blue);
       }
+
       body {
         padding-bottom: 60px;
       }
     }
+    .gradient {
+	width: 100vw;
+	height: 30vh;
+	background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+	background-size: 180% 180%;
+	animation: gradient-animation 6s ease infinite;
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
   </style>
 </head>
 <body>
@@ -139,67 +240,83 @@
     </nav>
   </header>
 
-  <!-- Hero -->
-  <main>
-    <section class="hero">
+  <!-- Hero Section -->
+ <!-- Hero Section -->
+<main>
+  <section class="hero gradient">
+
+    <!-- Hero Text -->
+    <div class="hero-content">
       <h2>Best Deals on Trending Gadgets</h2>
       <p>Shop now and get amazing deals with Cash on Delivery!</p>
-    </section>
+    </div>
+  </section>
 
-    <!-- Products -->
+
+    <!-- Product Grid -->
     <section class="products">
       <div class="product-grid">
+
         <!-- Product 1 -->
-        <div class="product-card" data-id="1">
-          <img src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector">
-          <h3>Kids Robot Space Projector</h3>
-          <div class="rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="features">
-            <span>Remote Controlled</span>
-            <span>360° Rotation</span>
-            <span>Colorful Galaxy Effect</span>
-          </div>
-          <div class="price">₹699</div>
+        <div class="product-card" data-id="kids-robot">
+          <a href="product-kids-robot.html" class="product-link">
+            <img src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector">
+            <h3>Kids Robot Space Projector</h3>
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="features">
+              <span>Remote Controlled</span>
+              <span>360° Rotation</span>
+              <span>Colorful Galaxy Effect</span>
+            </div>
+            <div class="price">₹699</div>
+          </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>
+
         <!-- Product 2 -->
-        <div class="product-card" data-id="2">
-          <img src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball">
-          <h3>Moon Light Crystal Ball</h3>
-          <div class="rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-          <div class="features">
-            <span>Warm LED Ambient Light</span>
-            <span>Ambience</span>
-            <span>Premium Glass & Wood</span>
-          </div>
-          <div class="price">₹269</div>
+        <div class="product-card" data-id="moon-light">
+          <a href="product-moon-light.html" class="product-link">
+            <img src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball">
+            <h3>Moon Light Crystal Ball</h3>
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <div class="features">
+              <span>Warm LED Ambient Light</span>
+              <span>Ambience</span>
+              <span>Premium Glass & Wood</span>
+            </div>
+            <div class="price">₹269</div>
+          </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>
+
         <!-- Product 3 -->
-        <div class="product-card" data-id="3">
-          <img src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector">
-          <h3>Starry Night Galaxy Projector</h3>
-          <div class="rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </div>
-          <div class="features">
-            <span>6 Color Light Effects</span>
-            <span>Colorful Galaxy Effect</span>
-            <span>USB or Battery Powered</span>
-          </div>
-          <div class="price">₹399</div>
+        <div class="product-card" data-id="starry-night">
+          <a href="product-starry-night.html" class="product-link">
+            <img src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector">
+            <h3>Starry Night Galaxy Projector</h3>
+            <div class="rating">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="features">
+              <span>6 Color Light Effects</span>
+              <span>Colorful Galaxy Effect</span>
+              <span>USB or Battery Powered</span>
+            </div>
+            <div class="price">₹399</div>
+          </a>
           <button class="add-to-cart">Add to Cart</button>
         </div>
+
       </div>
     </section>
   </main>

@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.product-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.product-gallery {
+  flex: 1 1 400px;
+}
+
+.product-gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.thumbs img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.thumbs img.active {
+  border-color: var(--main-blue);
+}
+
+.product-info {
+  flex: 1 1 400px;
+}
+
+.product-info h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  margin: 1rem 0;
+}
+
+.tabs {
+  margin-top: 2rem;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tab-buttons button.active {
+  background: var(--main-blue);
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .product-wrapper {
+    flex-direction: column;
+  }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: #fff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    justify-content: space-around;
+    padding: .5rem 0;
+    z-index: 100;
+  }
+
+  .bottom-nav a {
+    flex: 1;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    font-size: .9rem;
+  }
+
+  .bottom-nav a i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: .25rem;
+    color: var(--main-blue);
+  }
+
+  body {
+    padding-bottom: 60px;
+  }
+}

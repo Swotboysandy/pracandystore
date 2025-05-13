@@ -1,3 +1,10 @@
+:root {
+    --main-blue: #007bff; /* <-- your brand blue */
+  }
+  a {
+    color: white;
+    text-decoration: none;
+}
 /* Reset and Base Styles */
 :root {
     --primary-color: #2563eb;
