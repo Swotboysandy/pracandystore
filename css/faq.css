@@ -1,0 +1,68 @@
+:root {
+    --main-blue: #007bff; /* <-- your brand blue */
+  }
+  /* Accordion-specific only */
+  .faq-answer {
+    display: none;
+    transition: all 0.3s ease;
+  }
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+  .faq-question {
+    cursor: pointer;
+    position: relative;
+    padding-right: 25px;
+  }
+  .faq-question::after {
+    content: '\f078';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: transform 0.3s ease;
+  }
+  .faq-item.active .faq-question::after {
+    transform: rotate(180deg);
+  }
+
+  /* FIX: Ensure logo link has no underline */
+  .logo a {
+    text-decoration: none;
+  }
+   /* ----- Bottom Nav for Mobile ----- */
+   .bottom-nav {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .nav-links a:not(.cart-link) {
+      display: none;
+    }
+    .bottom-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+      justify-content: space-around;
+      padding: .5rem 0;
+      z-index: 100;
+    }
+    .bottom-nav a {
+      flex: 1;
+      text-align: center;
+      color: #333;
+      text-decoration: none;
+      font-size: .9rem;
+    }
+    .bottom-nav a i {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: .25rem;
+      color: var(--main-blue);
+    }
+    body {
+      padding-bottom: 60px;
+    }
+  }
