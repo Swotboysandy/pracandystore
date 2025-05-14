@@ -18,7 +18,8 @@ class Cart {
     updateCartCount() {
         const cartCount = document.querySelector('.cart-count');
         if (cartCount) {
-            cartCount.textContent = this.items.reduce((total, item) => total + item.quantity, 0);
+            const totalQty = this.items.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalQty;
         }
     }
 
@@ -67,22 +68,32 @@ class Cart {
     }
 }
 
-// Initialize and expose cart safely after DOM loads
+// Ensure cart count on back/forward navigation
+window.addEventListener('pageshow', () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCount = document.querySelector('.cart-count');
+    if (cartCount) {
+        const totalQty = cart.reduce((total, item) => total + item.quantity, 0);
+        cartCount.textContent = totalQty;
+    }
+});
+
+// Initialize after DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     window.cart = new Cart();
 
-    // Add-to-cart functionality for all product buttons
+    // Add to cart buttons
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             const productCard = e.target.closest('.product-card');
             const priceEl = productCard.querySelector('.price');
-            
-            // Get the final discounted price (skip .regular-price)
+
+            // Get the last text node (final discounted price)
             const finalPrice = [...priceEl.childNodes]
-                .filter(n => n.nodeType === 3 && n.textContent.trim()) // only text nodes with actual content
-                .pop().textContent.trim().replace('₹', '');
+                .filter(n => n.nodeType === 3 && n.textContent.trim())
+                .pop().textContent.trim().replace('₹', '').replace(',', '');
 
             const product = {
                 id: productCard.dataset.id,
@@ -93,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             cart.addItem(product);
 
-            // Show "Added to cart!" success message
+            // Show "Added to cart!" message
             const successMessage = document.createElement('div');
             successMessage.className = 'success-message';
             successMessage.textContent = 'Added to cart!';
@@ -113,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Render Cart Items on Cart Page
+    // Render cart items on cart page
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartTotalAmount = document.getElementById('cart-total-amount');
 
@@ -133,24 +144,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 cartItem.innerHTML = `
                     <img src="${item.image_url}" alt="${item.name}">
                     <div class="cart-item-details">
-                      <h3>${item.name}</h3>
-                      <p>₹${item.price}</p>
-                      <div class="quantity-controls">
-                        <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
-                        <span>${item.quantity}</span>
-                        <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
-                      </div>
+                        <h3>${item.name}</h3>
+                        <p>₹${item.price}</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                        </div>
                     </div>
                     <button class="remove-btn" onclick="removeItem('${item.id}')">
-                      <i class="fas fa-trash"></i>
+                        <i class="fas fa-trash"></i>
                     </button>
                 `;
                 cartItemsContainer.appendChild(cartItem);
             });
 
-            cartTotalAmount.textContent = cart.getTotal();
+            cartTotalAmount.textContent = `₹${cart.getTotal()}`;
         }
 
+        // Expose functions for cart interaction
         window.updateQuantity = (productId, quantity) => {
             cart.updateQuantity(productId, quantity);
             displayCartItems();
