@@ -66,6 +66,10 @@ class Cart {
         this.saveCart();
     }
 }
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.querySelector('.cart-count').textContent = cart.length;
+}
 
 // Initialize and expose cart safely after DOM loads
 document.addEventListener('DOMContentLoaded', () => {
