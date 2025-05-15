@@ -2,8 +2,8 @@
 
 :root {
     --main-blue: #007bff; /* <-- your brand blue */
-  }
-  a {
+}
+a {
     color: rgb(67, 33, 187);
     text-decoration: none;
 }
