@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+window.addEventListener('pageshow', () => {
+    if (window.cart) {
+      cart.updateCartCount();
+    }
+  });
+  
+
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
