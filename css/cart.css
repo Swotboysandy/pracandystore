@@ -188,6 +188,9 @@
     body {
       padding-bottom: 60px;
     }
+    .navbar {
+      justify-content: space-between;
+    }
   }
 
   /* ----- Cart page styles ----- */

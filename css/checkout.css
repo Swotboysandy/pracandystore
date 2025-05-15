@@ -3,14 +3,7 @@
   }
 
   /* ----- Navbar ----- */
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
+ 
   .logo a { text-decoration: none; color: inherit; }
   .nav-links {
     display: flex;

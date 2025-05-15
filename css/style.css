@@ -542,6 +542,9 @@ ul {
     body {
       padding-bottom: 60px;
     }
+    .navbar {
+        justify-content: space-between;
+      }
   }
 /* Utility Classes */
 .btn {

@@ -4,15 +4,7 @@
   /* Reset logo underline */
   .logo a { text-decoration: none; }
 
-  /* Navbar */
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1rem;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-  }
+ 
   .nav-links { display: flex; gap: 1rem; align-items: center; }
   .nav-links a {
     text-decoration: none;
@@ -54,6 +46,10 @@
       color: var(--main-blue) !important;
     }
     body { padding-bottom: 60px; }
+     /* Navbar */
+  .navbar {
+    justify-content: space-between;
+  }
   }
 
   /* Reviews grid styles */
