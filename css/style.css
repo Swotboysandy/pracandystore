@@ -237,6 +237,7 @@ body {
     transition: var(--transition);
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-family: 'Poppins';
 }
 
 .add-to-cart:hover {
