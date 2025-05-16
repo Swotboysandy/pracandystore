@@ -42,7 +42,12 @@ window.addEventListener('pageshow', () => {
       cart.updateCartCount();
     }
   });
-  
+
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted || (window.performance && performance.getEntriesByType("navigation")[0]?.type === "back_forward")) {
+      window.location.reload();
+    }
+  });  
 
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', () => {
