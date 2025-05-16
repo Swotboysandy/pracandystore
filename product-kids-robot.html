@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kids Robot Space Projector – Pracandy</title>
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="css/product.css" />
-  <link rel="stylesheet" href="css/faq.css">
-  <link rel="stylesheet" href="css/single.css">
+  <link rel="stylesheet" href="css/faq.css" />
+  <link rel="stylesheet" href="css/single.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
 
@@ -52,7 +52,7 @@
         </div>
         <button class="add-to-cart">Add to Cart</button>
 
-        <!-- Share Buttons -->
+        <!-- WhatsApp Share -->
         <div class="share-buttons">
           <a id="whatsapp-share" class="whatsapp" target="_blank">
             <i class="fab fa-whatsapp"></i> Share on WhatsApp
@@ -103,7 +103,7 @@
     </div>
   </footer>
 
-  <!-- Mobile Bottom Nav -->
+  <!-- Bottom Nav -->
   <nav class="bottom-nav">
     <a href="index.html"><i class="fas fa-home"></i>Home</a>
     <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
@@ -129,27 +129,20 @@
     document.addEventListener('DOMContentLoaded', () => {
       const shareButton = document.getElementById('whatsapp-share');
       const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
-     // Get only the real price (not .regular-price)
+
       const priceNode = [...document.querySelector('.price')?.childNodes || []]
         .filter(n => n.nodeType === 3 && n.textContent.trim())
         .map(n => n.textContent.trim())[0];
-      const image = document.querySelector('.product-gallery img')?.src;
-      const url = window.location.href;
 
-      const message = `🔥 Trending Now on Pracandy!\n\n✨ *${productTitle}*\n💸 Just ${price} (Limited Time!)\n📦 Cash on Delivery Available!\n\n👉 Tap to view: ${url}`;
+      const url = window.location.href;
+      const message = `🔥 Trending Now on Pracandy!\n\n✨ *${productTitle}*\n💸 Just ${priceNode} (Limited Time!)\n📦 Cash on Delivery Available!\n\n🛒 Tap to view: ${url}`;
+
       const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
       shareButton.setAttribute('href', whatsappURL);
-
-      // Instagram guide
-      instaButton.addEventListener('click', () => {
-        alert(
-          `Want to share on Instagram?\n\n1. Save the product image.\n2. Post it with this caption:\n\n"${message}"\n\nAnd tag us @your_insta_handle`
-        );
-      });
     });
   </script>
-  <script src="js/product.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/product.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
