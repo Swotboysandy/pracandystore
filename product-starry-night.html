@@ -112,7 +112,35 @@
   </nav>
 
   <!-- Scripts -->
- <script src="js/singlepage.js"></script>
+  <script>
+    function changeImage(thumb) {
+      const mainImage = document.getElementById('mainImage');
+      document.querySelectorAll('.thumbs img').forEach(img => img.classList.remove('active'));
+      thumb.classList.add('active');
+      mainImage.src = thumb.src;
+    }
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      
+
+      // WhatsApp share logic
+      const shareButton = document.getElementById('whatsapp-share');
+      const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
+      const price = document.querySelector('.price')?.textContent.trim();
+      const url = window.location.href;
+
+      const message = `🌌 Fall asleep under the stars!\n\n✨ *${productTitle}*\n💸 Just ${price}!\n🚚 COD Available\n\n🛒 View now:\n${url}`;
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      shareButton.setAttribute('href', whatsappURL);
+    });
+  </script>
 
   <script src="js/cart.js"></script>
   <script src="js/product.js"></script>

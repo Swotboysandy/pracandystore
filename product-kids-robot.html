@@ -111,7 +111,41 @@
   </nav>
 
   <!-- Scripts -->
-  <script src="js/singlepage.js"></script>
+  <script>
+    function changeImage(thumb) {
+      const mainImage = document.getElementById('mainImage');
+      document.querySelectorAll('.thumbs img').forEach(img => img.classList.remove('active'));
+      thumb.classList.add('active');
+      mainImage.src = thumb.src;
+    }
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const shareButton = document.getElementById('whatsapp-share');
+      const instaButton = document.getElementById('instagram-share');
+      const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
+      const price = document.querySelector('.price')?.textContent.trim();
+      const image = document.querySelector('.product-gallery img')?.src;
+      const url = window.location.href;
+
+      const message = `🔥 Trending Now on Pracandy!\n\n✨ *${productTitle}*\n💸 Just ${price} (Limited Time!)\n📦 Cash on Delivery Available!\n\n👉 Tap to view: ${url}`;
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      shareButton.setAttribute('href', whatsappURL);
+
+      // Instagram guide
+      instaButton.addEventListener('click', () => {
+        alert(
+          `Want to share on Instagram?\n\n1. Save the product image.\n2. Post it with this caption:\n\n"${message}"\n\nAnd tag us @your_insta_handle`
+        );
+      });
+    });
+  </script>
   <script src="js/product.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/main.js"></script>
