@@ -133,7 +133,11 @@
       // WhatsApp share logic
       const shareButton = document.getElementById('whatsapp-share');
       const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
-      const price = document.querySelector('.price')?.textContent.trim();
+      
+  // Get only the real price (not .regular-price)
+  const priceNode = [...document.querySelector('.price')?.childNodes || []]
+    .filter(n => n.nodeType === 3 && n.textContent.trim())
+    .map(n => n.textContent.trim())[0];
       const url = window.location.href;
 
       const message = `🌕 You're going to love this!\n\n✨ *${productTitle}*\n💸 Only ${price}!\n📦 Cash on Delivery Available\n\n👇 Grab it here:\n${url}`;

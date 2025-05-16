@@ -128,9 +128,11 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const shareButton = document.getElementById('whatsapp-share');
-      const instaButton = document.getElementById('instagram-share');
       const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
-      const price = document.querySelector('.price')?.textContent.trim();
+     // Get only the real price (not .regular-price)
+      const priceNode = [...document.querySelector('.price')?.childNodes || []]
+        .filter(n => n.nodeType === 3 && n.textContent.trim())
+        .map(n => n.textContent.trim())[0];
       const image = document.querySelector('.product-gallery img')?.src;
       const url = window.location.href;
 

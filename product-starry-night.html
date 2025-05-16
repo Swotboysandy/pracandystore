@@ -127,19 +127,23 @@
       event.target.classList.add('active');
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      
+   document.addEventListener('DOMContentLoaded', () => {
+  // WhatsApp share logic
+  const shareButton = document.getElementById('whatsapp-share');
+  const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
+  
+  // Get only the real price (not .regular-price)
+  const priceNode = [...document.querySelector('.price')?.childNodes || []]
+    .filter(n => n.nodeType === 3 && n.textContent.trim())
+    .map(n => n.textContent.trim())[0];
+  
+  const url = window.location.href;
 
-      // WhatsApp share logic
-      const shareButton = document.getElementById('whatsapp-share');
-      const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
-      const price = document.querySelector('.price')?.textContent.trim();
-      const url = window.location.href;
+  const message = `🌌 Fall asleep under the stars!\n\n✨ *${productTitle}*\n💸 Just ${priceNode}!\n🚚 COD Available\n\n🛒 View now:\n${url}`;
+  const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+  shareButton.setAttribute('href', whatsappURL);
+});
 
-      const message = `🌌 Fall asleep under the stars!\n\n✨ *${productTitle}*\n💸 Just ${price}!\n🚚 COD Available\n\n🛒 View now:\n${url}`;
-      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
-      shareButton.setAttribute('href', whatsappURL);
-    });
   </script>
 
   <script src="js/cart.js"></script>
