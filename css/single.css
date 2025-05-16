@@ -1,0 +1,32 @@
+ .price {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+    .price .regular-price {
+      font-size: 0.95rem;
+      color: #888;
+      text-decoration: line-through;
+      margin-right: 8px;
+      display: inline-block;
+    }
+
+    .share-buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .share-buttons a {
+      display: inline-block;
+      padding: 10px 16px;
+      color: #fff;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .share-buttons a i {
+      margin-right: 6px;
+    }
+    .whatsapp { background-color: #25D366; }
+    .instagram { background-color: #d6249f; }

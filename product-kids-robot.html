@@ -8,20 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/faq.css">
-  <style>
-    .price {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 1rem 0;
-    }
-    .price .regular-price {
-      font-size: 0.95rem;
-      color: #888;
-      text-decoration: line-through;
-      margin-right: 8px;
-      display: inline-block;
-    }
-  </style>
+  <link rel="stylesheet" href="css/single.css">
 </head>
 <body>
 
@@ -51,8 +38,8 @@
         <img id="mainImage" src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector" />
         <div class="thumbs">
           <img src="img/kids_robot_space_projector.png" alt="1" class="active" onclick="changeImage(this)">
-          <img src="img\opti-kids-robo.gif" alt="2" onclick="changeImage(this)">
-          <img src="img\kids-robo.jpg" alt="3" onclick="changeImage(this)">
+          <img src="img/opti-kids-robo.gif" alt="2" onclick="changeImage(this)">
+          <img src="img/kids-robo.jpg" alt="3" onclick="changeImage(this)">
         </div>
       </div>
 
@@ -65,6 +52,14 @@
         </div>
         <button class="add-to-cart">Add to Cart</button>
 
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+          <a id="whatsapp-share" class="whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+          </a>
+        </div>
+
+        <!-- Tabs -->
         <div class="tabs">
           <div class="tab-buttons">
             <button class="tab-btn active" onclick="showTab('desc')">Description</button>
@@ -115,7 +110,8 @@
     <a href="faq.html"><i class="fas fa-info-circle"></i>FAQs</a>
   </nav>
 
-  <!-- Scripts --> 
+  <!-- Scripts -->
+  <script src="js/singlepage.js"></script>
   <script src="js/product.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/main.js"></script>

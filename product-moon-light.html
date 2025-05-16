@@ -10,20 +10,7 @@
   <link rel="stylesheet" href="css/product.css" />
   <link rel="stylesheet" href="css/faq.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <style>
-    .price {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 1rem 0;
-    }
-    .price .regular-price {
-      font-size: 0.95rem;
-      color: #888;
-      text-decoration: line-through;
-      margin-right: 8px;
-      display: inline-block;
-    }
-  </style>
+  <link rel="stylesheet" href="css/single.css">
 </head>
 <body>
 
@@ -53,8 +40,8 @@
         <img id="mainImage" src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball" />
         <div class="thumbs">
           <img src="img/Moon_light_gift.png" alt="1" class="active" onclick="changeImage(this)">
-          <img src="img\moon-light.webp" alt="2" onclick="changeImage(this)">
-          <img src="img\moon-3rd.webp" alt="3" onclick="changeImage(this)">
+          <img src="img/moon-light.webp" alt="2" onclick="changeImage(this)">
+          <img src="img/moon-3rd.webp" alt="3" onclick="changeImage(this)">
         </div>
       </div>
 
@@ -66,6 +53,13 @@
           <span class="regular-price">₹899</span> ₹269
         </div>
         <button class="add-to-cart">Add to Cart</button>
+
+        <!-- WhatsApp Share -->
+        <div class="share-buttons">
+          <a id="whatsapp-share" class="whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+          </a>
+        </div>
 
         <div class="tabs">
           <div class="tab-buttons">
@@ -118,39 +112,8 @@
   </nav>
 
   <!-- Scripts -->
-  <!-- <script>
-    function changeImage(thumb) {
-      const mainImage = document.getElementById('mainImage');
-      document.querySelectorAll('.thumbs img').forEach(img => img.classList.remove('active'));
-      thumb.classList.add('active');
-      mainImage.src = thumb.src;
-    }
 
-    function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      event.target.classList.add('active');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const addToCartBtn = document.querySelector('.add-to-cart');
-      if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', () => {
-          const product = {
-            id: 'moon-light',
-            name: 'Moon Light Crystal Ball',
-            price: 269,
-            image_url: 'img/Moon_light_gift.png'
-          };
-          if (window.cart && typeof cart.addItem === 'function') {
-            cart.addItem(product);
-          }
-        });
-      }
-    });
-  </script> -->
-
+  <script src="js/singlepage.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/product.js"></script>
   <script src="js/main.js"></script>
