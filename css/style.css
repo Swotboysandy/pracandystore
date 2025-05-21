@@ -43,6 +43,22 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+.logo-img {
+    height: 100px;
+    width: auto;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 80px;
+        top: 25%;
+        left: 5%;
+        width: auto;
+    }
+}
 
 /* Header and Navigation */
 .navbar {
