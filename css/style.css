@@ -638,6 +638,23 @@ ul {
         opacity: 1;
     }
 }
+/* === Sticky header === */
+header {
+  position: sticky;     /* or use `fixed` if you prefer */
+  top: 0;               /* stick to the very top of the viewport */
+  z-index: 1000;        /* make sure it sits above product cards, etc. */
+}
+
+/* Give the bar a solid background so content underneath doesn’t show through */
+header .navbar {
+  background: #ffffff;  /* pick any brand color here */
+  border-bottom: 1px solid #eee;   /* optional subtle divider */
+}
+
+/* Optional: if your header is tall, add scroll-padding so anchor links land right */
+html {
+  scroll-padding-top: 70px; /* match header height */
+}
 
 .success-message {
     animation: slideIn 0.3s ease-out;
