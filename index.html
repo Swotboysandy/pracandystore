@@ -4,19 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pracandy - Best Deals on Trending Gadgets</title>
-
-  <!-- External Styles -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/reviews.css" />
+  <link rel="stylesheet" href="css/reviews.css">
 
   <style>
-    /* ——— Price style (was already in your page) ——— */
     .price {
       font-size: 1.2rem;
       font-weight: bold;
       margin: 1rem 0;
     }
+
     .price .regular-price {
       font-size: 0.95rem;
       color: #888;
@@ -24,40 +22,6 @@
       margin-right: 8px;
       display: inline-block;
     }
-
-    /* ——— Product-badge (NEW) ——— */
-   /* === Product “trademark” badge – mini + tucked away === */
-.product-card {
-  position: relative;          /* keep -– the card stays the badge’s parent */
-  overflow: hidden;
-}
-
-.product-badge {
-  position: absolute;
-  width: auto;
-  height: 80px !important;                 /* ⬅️ shrink it */
-  bottom: 80%;                 /* ⬇️ park it in the corner */
-  right: 40%;                  /* ➡️ */
-  transform: none;             /* straighten (remove the tilt) */
-  opacity: 1;               /* still visible but not shouting */
-  pointer-events: none;
-  z-index: 2;
-}
-/* ——— Android / small-screen fix ——— */
-/* Hit most phones in portrait (≤480 px wide) */
-@media only screen and (max-width: 480px) {
-    .product-badge {
-        height: 40px;
-        width: auto;
-        bottom: 84%;
-        right: 35%;
-        transform: none;
-        opacity: 0.95;
-    }
-}
-
-
-   
   </style>
 </head>
 <body>
@@ -66,7 +30,7 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="index.html"><img src="img/Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
+        <a href="index.html"><a href="index.html"><img src="img\Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
       </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -84,24 +48,25 @@
   <main>
     <div class="hero-content">
       <h2>Best Deals on Trending Gadgets</h2>
-      <p>Shop now and get amazing deals — Cash on Delivery!</p>
+      <p>Shop now and get amazing deals Cash on Delivery!</p>
     </div>
     <div class="gradient-bg">
-      <!-- unchanged SVG / gradient markup -->
       <svg xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="goo">
             <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-            <feColorMatrix in="blur" mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8"
-              result="goo" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -8" result="goo" />
             <feBlend in="SourceGraphic" in2="goo" />
           </filter>
         </defs>
       </svg>
       <div class="gradients-container">
-        <div class="g1"></div><div class="g2"></div><div class="g3"></div>
-        <div class="g4"></div><div class="g5"></div><div class="interactive"></div>
+        <div class="g1"></div>
+        <div class="g2"></div>
+        <div class="g3"></div>
+        <div class="g4"></div>
+        <div class="g5"></div>
+        <div class="interactive"></div>
       </div>
     </div>
 
@@ -111,9 +76,6 @@
 
         <!-- Product 1 -->
         <div class="product-card" data-id="kids-robot">
-          <!-- ⭐ NEW badge inside every card -->
-          <img src="img/Logo.svg" alt="Pracandy Mark" class="product-badge">
-          
           <a href="product-kids-robot.html" class="product-link">
             <img src="img/kids_robot_space_projector.png" alt="Kids Robot Space Projector">
             <h3>Kids Robot Space Projector</h3>
@@ -136,8 +98,6 @@
 
         <!-- Product 2 -->
         <div class="product-card" data-id="moon-light">
-          <img src="img/Logo.svg" alt="Pracandy Mark" class="product-badge">
-
           <a href="product-moon-light.html" class="product-link">
             <img src="img/Moon_light_gift.png" alt="Moon Light Crystal Ball">
             <h3>Moon Light Crystal Ball</h3>
@@ -160,8 +120,6 @@
 
         <!-- Product 3 -->
         <div class="product-card" data-id="starry-night">
-          <img src="img/Logo.svg" alt="Pracandy Mark" class="product-badge">
-
           <a href="product-starry-night.html" class="product-link">
             <img src="img/starry_night_projector.png" alt="Starry Night Galaxy Projector">
             <h3>Starry Night Galaxy Projector</h3>
@@ -186,7 +144,7 @@
     </section>
   </main>
 
-  <!-- Footer (unchanged) -->
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -207,7 +165,7 @@
     </div>
   </footer>
 
-  <!-- Mobile Bottom Nav (unchanged) -->
+  <!-- Mobile Bottom Nav -->
   <nav class="bottom-nav">
     <a href="index.html"><i class="fas fa-home"></i>Home</a>
     <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
