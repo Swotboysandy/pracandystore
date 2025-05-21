@@ -123,7 +123,7 @@ body {
     background-color: var(--danger-color);
     color: white;
     border-radius: 50%;
-    padding: 0.2rem 0.5rem;
+    padding: 0px 7px;
     font-size: 0.8rem;
     font-weight: 600;
     box-shadow: var(--shadow-sm);
