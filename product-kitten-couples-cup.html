@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cute Kitten Couples Dudu Fudu Cup – Pracandy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="img/Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="product-wrapper">
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <img id="mainImage" src="img/kitten_couples_cup.png" alt="Cute Kitten Couples Dudu Fudu Cup" />
+        <div class="thumbs">
+          <img src="img/kitten_couples_cup.png" alt="1" class="active" onclick="changeImage(this)">
+          <img src="img/kitten_couples_cup_alt1.jpg" alt="2" onclick="changeImage(this)">
+          <img src="img/kitten_couples_cup_alt2.jpg" alt="3" onclick="changeImage(this)">
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <h2>Cute Kitten Couples Dudu Fudu Cup</h2>
+        <p>Celebrate love and cuteness with this adorable kitten couples cup! Perfect for couples, friends, or anyone who loves cats. Made from premium ceramic, it’s ideal for coffee, tea, or as a charming gift for special occasions.</p>
+        <div class="price">
+          <span class="regular-price">₹399</span> ₹199
+        </div>
+        <button class="add-to-cart">Add to Cart</button>
+
+        <!-- WhatsApp Share -->
+        <div class="share-buttons">
+          <a id="whatsapp-share" class="whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+          </a>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('desc')">Description</button>
+            <button class="tab-btn" onclick="showTab('specs')">Specifications</button>
+          </div>
+          <div id="desc" class="tab-content active">
+            <p>This Cute Kitten Couples Dudu Fudu Cup features a sweet kitten design, making every sip special. A perfect gift for anniversaries, birthdays, or just to show you care!</p>
+          </div>
+          <div id="specs" class="tab-content">
+            <ul>
+              <li>Material: Premium Ceramic</li>
+              <li>Capacity: 350ml</li>
+              <li>Design: Cute Kitten Couples Print</li>
+              <li>Microwave & Dishwasher Safe</li>
+              <li>Perfect for: Couples, Cat Lovers, Gifting</li>
+              <li>Price: ₹199</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content"></div>
+  </footer>
+  <script>
+    function changeImage(img) {
+      document.getElementById('mainImage').src = img.src;
+      document.querySelectorAll('.thumbs img').forEach(i => i.classList.remove('active'));
+      img.classList.add('active');
+    }
+    function showTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.querySelector('.tab-btn[onclick*="' + tab + '"]').classList.add('active');
+      document.getElementById(tab).classList.add('active');
+    }
+  </script>
+</body>
+</html>

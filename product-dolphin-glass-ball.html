@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dolphin Decorative Glass Ball – Pracandy</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html"><img src="img/Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="faq.html">FAQs</a>
+        <a href="cart.html" class="cart-link">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Product Content -->
+  <main>
+    <div class="product-wrapper">
+      <!-- Gallery -->
+      <div class="product-gallery">
+        <img id="mainImage" src="img/dolphin_glass_ball.png" alt="Dolphin Decorative Glass Ball" />
+        <div class="thumbs">
+          <img src="img/dolphin_glass_ball.png" alt="1" class="active" onclick="changeImage(this)">
+          <img src="img/dolphin_glass_ball_alt1.jpg" alt="2" onclick="changeImage(this)">
+          <img src="img/dolphin_glass_ball_alt2.jpg" alt="3" onclick="changeImage(this)">
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="product-info">
+        <h2>Dolphin Decorative Glass Ball</h2>
+        <p>Beautiful dolphin-themed glass ball, perfect as a birthday gift or for home decor. Corded electric for a magical illuminated effect!</p>
+        <div class="price">
+          <span class="regular-price">₹799</span> ₹249
+        </div>
+        <button class="add-to-cart">Add to Cart</button>
+
+        <!-- WhatsApp Share -->
+        <div class="share-buttons">
+          <a id="whatsapp-share" class="whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+          </a>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" onclick="showTab('desc')">Description</button>
+            <button class="tab-btn" onclick="showTab('specs')">Specifications</button>
+          </div>
+          <div id="desc" class="tab-content active">
+            <p>This Dolphin Decorative Glass Ball adds a touch of elegance and wonder to any room. Its corded electric design ensures a steady, beautiful glow, making it a perfect birthday gift or decorative piece for your home or office.</p>
+          </div>
+          <div id="specs" class="tab-content">
+            <ul>
+              <li>Theme: Dolphin</li>
+              <li>Material: Premium Glass</li>
+              <li>Lighting: Corded Electric</li>
+              <li>Perfect for: Birthday gifts, Home Decor</li>
+              <li>Price: ₹249</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-content"></div>
+  </footer>
+  <script>
+    function changeImage(img) {
+      document.getElementById('mainImage').src = img.src;
+      document.querySelectorAll('.thumbs img').forEach(i => i.classList.remove('active'));
+      img.classList.add('active');
+    }
+    function showTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.querySelector('.tab-btn[onclick*="' + tab + '"]').classList.add('active');
+      document.getElementById(tab).classList.add('active');
+    }
+  </script>
+</body>
+</html>
