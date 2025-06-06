@@ -627,6 +627,49 @@ ul {
     }
 }
 
+@media (max-width: 600px) {
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  .product-card {
+    padding: 0.5rem 0.3rem;
+    min-height: unset;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .product-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    min-height: 2.2em;
+    line-height: 1.1;
+  }
+  .product-card .features span {
+    display: none;
+  }
+  .product-card .features span:first-child {
+    display: inline-block;
+    font-size: 0.8rem;
+    background: #f2f2f2;
+    border-radius: 4px;
+    padding: 2px 6px;
+    margin-bottom: 0.2rem;
+  }
+  .product-card .price,
+  .product-card .regular-price,
+  .product-card .rating {
+    font-size: 0.85rem;
+  }
+  .product-card button.add-to-cart {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.5rem;
+    margin-top: 0.4rem;
+  }
+}
+
 /* Success Message Animation */
 @keyframes slideIn {
     from {
