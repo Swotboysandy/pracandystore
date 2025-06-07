@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dudu Bubu Coffee Mug – Pracandy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starry Night Galaxy Projector – Pracandy</title>
+<!-- Favicon -->
+<link rel="icon" href="img/favicon.png" type="image/png" sizes="35x35">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="css/product.css" />
+  <link rel="stylesheet" href="css/faq.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/single.css">
+
 </head>
 <body>
-  <header>
+
+  <!-- Header -->
+   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="index.html"><img src="img/Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
+        <a href="index.html"><a href="index.html"><img src="img\Logo.svg" alt="Pracandy Logo" class="logo-img" /></a>
       </div>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -26,22 +33,23 @@
     </nav>
   </header>
 
+  <!-- Product Content -->
   <main>
     <div class="product-wrapper">
       <!-- Gallery -->
       <div class="product-gallery">
-        <img id="mainImage" src="img/dudu_fudu (4).png" alt="Dudu Bubu Coffee Mug" />
+        <img id="mainImage" src="img/kitten_couples_cup.png" alt="Dudu Bubu Coffee Mug" />
         <div class="thumbs">
-          <img src="img/dudu_fudu (3).png" alt="1" class="active" onclick="changeImage(this)">
-          <img src="img/dudu_fudu (2).png" alt="2" onclick="changeImage(this)">
-          <img src="img/dudu_fudu (1).png" alt="3" onclick="changeImage(this)">
+          <img src="img/kitten_couples_cup.png" alt="1" class="active" onclick="changeImage(this)">
+          <img src="img/kitten_couples_cup_alt1.jpg" alt="2" onclick="changeImage(this)">
+          <img src="img/kitten_couples_cup_alt2.jpg" alt="3" onclick="changeImage(this)">
         </div>
       </div>
 
       <!-- Info -->
       <div class="product-info">
-        <h2>Dudu Bubu Coffee Mug</h2>
-        <p>Surprise your loved ones with this adorable Dudu Bubu Coffee Mug! Made from high-quality ceramic, it’s perfect for morning coffee, evening tea, or as a cute desk accessory. A thoughtful gift for birthdays, anniversaries, or just to show you care.</p>
+        <h2>Dudu Bubu Cup for Couples</h2>
+        <p>Share your favorite drinks with your loved one using this adorable Dudu Bubu Cup for Couples! Crafted from premium ceramic, this cup features a cute kitten couple design, making it a perfect gift for anniversaries, birthdays, or just to show you care. Enjoy coffee, tea, or any beverage together in style!</p>
         <div class="price">
           <span class="regular-price">₹399</span> ₹199
         </div>
@@ -54,22 +62,21 @@
           </a>
         </div>
 
-        <!-- Tabs -->
         <div class="tabs">
           <div class="tab-buttons">
             <button class="tab-btn active" onclick="showTab('desc')">Description</button>
             <button class="tab-btn" onclick="showTab('specs')">Specifications</button>
           </div>
           <div id="desc" class="tab-content active">
-            <p>This cute mug features the lovable Dudu Bubu bear, making every sip a delight. Its sturdy ceramic build ensures durability and a premium feel.</p>
+            <p>This Dudu Bubu Cup for Couples is designed for those who cherish sweet moments together. Its charming kitten couple artwork brings a smile with every sip. Ideal for couples, friends, or anyone who loves cute and functional gifts.</p>
           </div>
           <div id="specs" class="tab-content">
             <ul>
               <li>Material: Premium Ceramic</li>
               <li>Capacity: 350ml</li>
-              <li>Design: Dudu Bubu Bear Print</li>
+              <li>Design: Cute Kitten Couples Print</li>
               <li>Microwave & Dishwasher Safe</li>
-              <li>Perfect for: Coffee, Tea, Gifting</li>
+              <li>Perfect for: Couples, Cat Lovers, Gifting</li>
               <li>Price: ₹199</li>
             </ul>
           </div>
@@ -78,21 +85,68 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-content"></div>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About Pracandy</h4>
+        <p>Your one-stop shop for trending gadgets and gift items at unbeatable prices.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><a href="mailto:info.pracandystore@gmail.com">info.pracandystore@gmail.com</a></p>
+      </div>
+      <div class="footer-section">
+        <h4>Payment Methods</h4>
+        <p>Cash on Delivery (COD) Available</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Pracandy. All rights reserved.</p>
+    </div>
   </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="index.html"><i class="fas fa-home"></i>Home</a>
+    <a href="reviews.html"><i class="fas fa-thumbs-up"></i>Reviews</a>
+    <a href="faq.html"><i class="fas fa-info-circle"></i>FAQs</a>
+  </nav>
+
+ <!-- Scripts -->
   <script>
-    function changeImage(img) {
-      document.getElementById('mainImage').src = img.src;
-      document.querySelectorAll('.thumbs img').forEach(i => i.classList.remove('active'));
-      img.classList.add('active');
+    function changeImage(thumb) {
+      const mainImage = document.getElementById('mainImage');
+      document.querySelectorAll('.thumbs img').forEach(img => img.classList.remove('active'));
+      thumb.classList.add('active');
+      mainImage.src = thumb.src;
     }
-    function showTab(tab) {
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-      document.querySelector('.tab-btn[onclick*="' + tab + '"]').classList.add('active');
-      document.getElementById(tab).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const shareButton = document.getElementById('whatsapp-share');
+      const productTitle = document.querySelector('.product-info h2')?.textContent.trim();
+
+      const priceNode = [...document.querySelector('.price')?.childNodes || []]
+        .filter(n => n.nodeType === 3 && n.textContent.trim())
+        .map(n => n.textContent.trim())[0];
+
+      const url = window.location.href;
+      const message = `🔥 Trending Now on Pracandy!\n\n✨ *${productTitle}*\n💸 Just ${priceNode} (Limited Time!)\n📦 Cash on Delivery Available!\n\n🛒 Tap to view: ${url}`;
+
+      const whatsappURL = `https://wa.me/?text=${encodeURIComponent(message)}`;
+      shareButton.setAttribute('href', whatsappURL);
+    });
   </script>
+
+  <script src="js/cart.js"></script>
+  <script src="js/product.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
